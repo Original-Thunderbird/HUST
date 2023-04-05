@@ -1,0 +1,7 @@
+Running: xsim.dir/c_fz_func_impl/xsimk -simmode gui -wdb c_fz_func_impl.wdb -simrunnum 0 -socket 51687
+Design successfully loaded
+Design Loading Memory Usage: 92316 KB (Peak: 92348 KB)
+Design Loading CPU Usage: 50 ms
+Simulation completed
+Simulation Memory Usage: 166048 KB (Peak: 231584 KB)
+Simulation CPU Usage: 50 ms

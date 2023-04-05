@@ -1,0 +1,7 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/c_b/c_b.srcs/sources_1/new/c_b.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_b
+INFO: [VRFC 10-311] analyzing module c
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/c_b/c_b.srcs/sim_1/new/c_b_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_b_sim
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/c_b/c_b.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

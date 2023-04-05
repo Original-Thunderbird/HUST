@@ -1,0 +1,9 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "a_b_sim_func_synth.v"
+verilog xil_defaultlib  "../../../../a_b.srcs/sim_1/new/a_b_sim.v"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,29 @@
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: /opt/Xilinx/Vivado/2015.2/bin/unwrapped/lnx64.o/xelab -wto 82fe05d896004e3bab60b44e03b9ab15 --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L secureip --snapshot b_sim_func_impl xil_defaultlib.b_sim xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling module unisims_ver.sffsrce_fdre
+Compiling module unisims_ver.FDRE(IS_C_INVERTED=1'b1)
+Compiling module xil_defaultlib.jk
+Compiling module unisims_ver.x_lut3_mux4
+Compiling module unisims_ver.x_lut3_mux4_reduced_0
+Compiling module unisims_ver.LUT3
+Compiling module xil_defaultlib.jk_0
+Compiling module xil_defaultlib.jk_1
+Compiling module unisims_ver.x_lut2_mux4
+Compiling module unisims_ver.LUT2
+Compiling module xil_defaultlib.jk_2
+Compiling module unisims_ver.OBUF
+Compiling module unisims_ver.BUFG
+Compiling module unisims_ver.IBUF
+Compiling module xil_defaultlib.b
+Compiling module xil_defaultlib.b_sim
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot b_sim_func_impl

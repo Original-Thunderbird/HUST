@@ -1,0 +1,12 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/桌面/第三次/b_2/b_2.sim/sim_1/impl/func/b_sim_func_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module b
+INFO: [VRFC 10-311] analyzing module jk
+INFO: [VRFC 10-311] analyzing module jk_0
+INFO: [VRFC 10-311] analyzing module jk_1
+INFO: [VRFC 10-311] analyzing module jk_2
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/桌面/第三次/b_2/b_2.srcs/sim_1/new/b_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module b_sim
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/桌面/第三次/b_2/b_2.sim/sim_1/impl/func/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+WARNING: [VRFC 10-1195] overwriting previous definition of module glbl [/home/orithu/桌面/第三次/b_2/b_2.sim/sim_1/impl/func/glbl.v:6]

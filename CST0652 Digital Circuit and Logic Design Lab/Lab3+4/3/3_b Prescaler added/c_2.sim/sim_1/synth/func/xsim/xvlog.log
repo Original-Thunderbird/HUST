@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/dell/Desktop/C/C.sim/sim_1/synth/func/xsim/c_fz_func_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/dell/Desktop/C/C.srcs/sim_1/new/c_fz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_fz

@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Thu Jun 07 21:39:01 2018
+# Process ID: 6024
+# Log file: C:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/c_2/vivado.log
+# Journal file: C:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/c_2\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/c_2/c_2.xpr}
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] IP Repository Path: Could not find the directory 'C:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/C/C.cache/ip'.
+WARNING: [filemgmt 56-3] IP Output Repository Path: Could not find the directory 'C:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/C/C.cache/ip'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/C/C.cache/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2015.2/data/ip'.
+open_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 707.836 ; gain = 139.656
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 07 21:39:35 2018...

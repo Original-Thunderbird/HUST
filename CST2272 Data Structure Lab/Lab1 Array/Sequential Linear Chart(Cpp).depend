@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1510925863 source:d:\program files\dev-cpp\myprojects\sequential linear chart(cpp)\main.cpp
+	<iostream>
+	<stdio.h>
+	<malloc.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
+1511450556 source:d:\program files\dev-cpp\myprojects\sequential linear chart(cpp-multichart-easy)\main.cpp
+	<stdio.h>
+	<malloc.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+

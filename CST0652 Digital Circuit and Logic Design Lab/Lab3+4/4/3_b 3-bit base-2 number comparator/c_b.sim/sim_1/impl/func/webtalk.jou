@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Webtalk v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Fri Jun 15 17:10:02 2018
+# Process ID: 2494
+# Log file: /home/orithu/桌面/FORTH/c_2/c_b.sim/sim_1/impl/func/webtalk.log
+# Journal file: /home/orithu/桌面/FORTH/c_2/c_b.sim/sim_1/impl/func/webtalk.jou
+#-----------------------------------------------------------
+source /home/orithu/桌面/FORTH/c_2/c_b.sim/sim_1/impl/func/xsim.dir/c_b_sim_func_impl/webtalk/xsim_webtalk.tcl -notrace

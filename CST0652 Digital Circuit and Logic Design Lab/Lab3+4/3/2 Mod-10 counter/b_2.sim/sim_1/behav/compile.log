@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/桌面/THIRD/b/b_2.srcs/sources_1/new/b.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module b
+INFO: [VRFC 10-311] analyzing module jk
+WARNING: [VRFC 10-1315] redeclaration of ansi port q is not allowed [/home/orithu/桌面/THIRD/b/b_2.srcs/sources_1/new/b.v:45]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/桌面/THIRD/b/b_2.srcs/sim_1/new/b_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module b_sim
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/桌面/THIRD/b/b_2.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

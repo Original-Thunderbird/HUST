@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Webtalk v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Thu Jun 14 10:19:33 2018
+# Process ID: 9902
+# Log file: /home/orithu/b/b.sim/sim_1/synth/timing/webtalk.log
+# Journal file: /home/orithu/b/b.sim/sim_1/synth/timing/webtalk.jou
+#-----------------------------------------------------------
+source /home/orithu/b/b.sim/sim_1/synth/timing/xsim.dir/b_sim_time_synth/webtalk/xsim_webtalk.tcl -notrace

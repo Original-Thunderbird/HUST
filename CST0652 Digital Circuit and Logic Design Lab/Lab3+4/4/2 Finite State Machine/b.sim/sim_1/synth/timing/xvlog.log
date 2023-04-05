@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/b/b.sim/sim_1/synth/timing/b_sim_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module b
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/b/b.srcs/sim_1/new/b_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module b_sim
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/orithu/b/b.sim/sim_1/synth/timing/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+WARNING: [VRFC 10-1195] overwriting previous definition of module glbl [/home/orithu/b/b.sim/sim_1/synth/timing/glbl.v:6]

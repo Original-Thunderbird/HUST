@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Fri Jun  8 20:26:31 2018
+# Process ID: 8568
+# Log file: /home/orithu/桌面/第三次/c_2/c_2.runs/impl_1/c.vdi
+# Journal file: /home/orithu/桌面/第三次/c_2/c_2.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source c.tcl -notrace
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2015.2
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/orithu/桌面/第三次/c_2/c_2.srcs/constrs_1/new/lab1_nexys4.xdc]
+WARNING: [Vivado 12-584] No ports matched 'cp'. [/home/orithu/桌面/第三次/c_2/c_2.srcs/constrs_1/new/lab1_nexys4.xdc:7]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/orithu/桌面/第三次/c_2/c_2.srcs/constrs_1/new/lab1_nexys4.xdc:7]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'cp'. [/home/orithu/桌面/第三次/c_2/c_2.srcs/constrs_1/new/lab1_nexys4.xdc:8]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/orithu/桌面/第三次/c_2/c_2.srcs/constrs_1/new/lab1_nexys4.xdc:8]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [/home/orithu/桌面/第三次/c_2/c_2.srcs/constrs_1/new/lab1_nexys4.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+link_design: Time (s): cpu = 00:00:53 ; elapsed = 00:01:52 . Memory (MB): peak = 1098.551 ; gain = 206.969 ; free physical = 443 ; free virtual = 1763
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a100t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 4 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:00.47 ; elapsed = 00:00:00.95 . Memory (MB): peak = 1114.566 ; gain = 7.012 ; free physical = 421 ; free virtual = 1758

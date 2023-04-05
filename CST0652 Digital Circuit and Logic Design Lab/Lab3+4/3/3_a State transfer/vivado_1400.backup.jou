@@ -1,0 +1,52 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Thu Jun 07 20:59:08 2018
+# Process ID: 4336
+# Log file: E:/QQ文件/c_2/vivado.log
+# Journal file: E:/QQ文件/c_2\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/QQ文件/c_2/c_2.xpr
+launch_simulation
+source c_fz.tcl
+launch_runs impl_1
+wait_on_run impl_1
+close_sim
+launch_simulation
+source c_fz.tcl
+close_sim
+launch_simulation
+source c_fz.tcl
+set_property -name {xsim.simulate.runtime} -value {5000ns} -objects [current_fileset -simset]
+close_sim
+launch_simulation
+source c_fz.tcl
+reset_run impl_1
+launch_runs impl_1
+wait_on_run impl_1
+launch_simulation -mode post-implementation -type functional
+source c_fz.tcl
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
+reset_run impl_1 -prev_step 
+close_sim
+close_sim
+add_files -fileset constrs_1 -norecurse E:/QQ文件/c_2/c_2.srcs/constrs_1/new/lab1_nexys4.xdc
+remove_files -fileset constrs_1 E:/QQ文件/c_2/c_2.srcs/constrs_1/new/c_con.xdc
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
+close [ open E:/QQ文件/c_2/c_2.srcs/sources_1/new/div.v w ]
+add_files E:/QQ文件/c_2/c_2.srcs/sources_1/new/div.v
+update_compile_order -fileset sources_1
+launch_simulation
+source c_fz.tcl
+reset_run synth_1
+launch_runs impl_1
+wait_on_run impl_1
+close_sim

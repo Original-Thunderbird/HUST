@@ -1,0 +1,489 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Thu Jun 07 20:59:08 2018
+# Process ID: 4336
+# Log file: E:/QQ文件/c_2/vivado.log
+# Journal file: E:/QQ文件/c_2\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/QQ文件/c_2/c_2.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/chen/c_2' since last save.
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-2] IP Repository Path: Could not find the directory 'E:/QQ文件/C/C.cache/ip', nor could it be found using path 'C:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/chen/C/C.cache/ip'.
+WARNING: [filemgmt 56-2] IP Output Repository Path: Could not find the directory 'E:/QQ文件/C/C.cache/ip', nor could it be found using path 'C:/Users/Administrator/Documents/Tencent Files/2290281051/FileRecv/chen/C/C.cache/ip'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/QQ文件/C/C.cache/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/XILINX/Vivado/2015.2/data/ip'.
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:08 . Memory (MB): peak = 732.461 ; gain = 172.883
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'c_fz' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+"xvlog -m64 --relax -prj c_fz_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c
+WARNING: [VRFC 10-1315] redeclaration of ansi port q1 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:30]
+WARNING: [VRFC 10-1315] redeclaration of ansi port q2 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:31]
+WARNING: [VRFC 10-1315] redeclaration of ansi port sig_syn is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sim_1/new/c_fz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_fz
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: D:/XILINX/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto b67c3117392541f4808a4a38bf12dfb5 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot c_fz_behav xil_defaultlib.c_fz xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.c
+Compiling module xil_defaultlib.c_fz
+Compiling module xil_defaultlib.glbl
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot c_fz_behav
+
+****** Webtalk v2015.2 (64-bit)
+  **** SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+  **** IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+    ** Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+
+source E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Thu Jun 07 21:00:35 2018. For additional details about this file, please refer to the WebTalk help file at D:/XILINX/Vivado/2015.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Thu Jun 07 21:00:35 2018...
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:12 . Memory (MB): peak = 733.828 ; gain = 0.000
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "c_fz_behav -key {Behavioral:sim_1:Functional:c_fz} -tclbatch {c_fz.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2015.2
+Time resolution is 1 ps
+source c_fz.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'c_fz_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 734.188 ; gain = 0.359
+launch_runs impl_1
+[Thu Jun 07 21:00:55 2018] Launched synth_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/synth_1/runme.log
+[Thu Jun 07 21:00:55 2018] Launched impl_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/impl_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 770.086 ; gain = 0.000
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'c_fz' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+"xvlog -m64 --relax -prj c_fz_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c
+WARNING: [VRFC 10-1315] redeclaration of ansi port q1 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:30]
+WARNING: [VRFC 10-1315] redeclaration of ansi port q2 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:31]
+WARNING: [VRFC 10-1315] redeclaration of ansi port sig_syn is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sim_1/new/c_fz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_fz
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: D:/XILINX/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto b67c3117392541f4808a4a38bf12dfb5 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot c_fz_behav xil_defaultlib.c_fz xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.c
+Compiling module xil_defaultlib.c_fz
+Compiling module xil_defaultlib.glbl
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot c_fz_behav
+
+****** Webtalk v2015.2 (64-bit)
+  **** SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+  **** IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+    ** Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+
+source E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Thu Jun 07 21:04:06 2018. For additional details about this file, please refer to the WebTalk help file at D:/XILINX/Vivado/2015.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Thu Jun 07 21:04:06 2018...
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 770.086 ; gain = 0.000
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "c_fz_behav -key {Behavioral:sim_1:Functional:c_fz} -tclbatch {c_fz.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2015.2
+Time resolution is 1 ps
+source c_fz.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'c_fz_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 770.086 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 770.086 ; gain = 0.000
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'c_fz' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+"xvlog -m64 --relax -prj c_fz_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c
+WARNING: [VRFC 10-1315] redeclaration of ansi port q1 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:30]
+WARNING: [VRFC 10-1315] redeclaration of ansi port q2 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:31]
+WARNING: [VRFC 10-1315] redeclaration of ansi port sig_syn is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sim_1/new/c_fz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_fz
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: D:/XILINX/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto b67c3117392541f4808a4a38bf12dfb5 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot c_fz_behav xil_defaultlib.c_fz xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.c
+Compiling module xil_defaultlib.c_fz
+Compiling module xil_defaultlib.glbl
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot c_fz_behav
+
+****** Webtalk v2015.2 (64-bit)
+  **** SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+  **** IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+    ** Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+
+source E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Thu Jun 07 21:04:58 2018. For additional details about this file, please refer to the WebTalk help file at D:/XILINX/Vivado/2015.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Thu Jun 07 21:04:58 2018...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:11 . Memory (MB): peak = 770.086 ; gain = 0.000
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "c_fz_behav -key {Behavioral:sim_1:Functional:c_fz} -tclbatch {c_fz.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2015.2
+Time resolution is 1 ps
+source c_fz.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'c_fz_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:14 . Memory (MB): peak = 770.086 ; gain = 0.000
+set_property -name {xsim.simulate.runtime} -value {5000ns} -objects [current_fileset -simset]
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 770.086 ; gain = 0.000
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'c_fz' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+"xvlog -m64 --relax -prj c_fz_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c
+WARNING: [VRFC 10-1315] redeclaration of ansi port q1 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:30]
+WARNING: [VRFC 10-1315] redeclaration of ansi port q2 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:31]
+WARNING: [VRFC 10-1315] redeclaration of ansi port sig_syn is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sim_1/new/c_fz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_fz
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: D:/XILINX/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto b67c3117392541f4808a4a38bf12dfb5 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot c_fz_behav xil_defaultlib.c_fz xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.c
+Compiling module xil_defaultlib.c_fz
+Compiling module xil_defaultlib.glbl
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot c_fz_behav
+
+****** Webtalk v2015.2 (64-bit)
+  **** SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+  **** IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+    ** Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+
+source E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/xsim_webtalk.tcl -notrace
+webtalk_transmit: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 62.148 ; gain = 0.023
+
+    while executing
+"webtalk_transmit -clientid 1360398198 -regid "211544571_0_0_448" -xml E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/usage_statistics..."
+    (file "E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/xsim_webtalk.tcl" line 41)
+INFO: [Common 17-206] Exiting Webtalk at Thu Jun 07 21:05:52 2018...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:11 . Memory (MB): peak = 770.086 ; gain = 0.000
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "c_fz_behav -key {Behavioral:sim_1:Functional:c_fz} -tclbatch {c_fz.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2015.2
+Time resolution is 1 ps
+source c_fz.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 5000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'c_fz_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 5000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:15 . Memory (MB): peak = 770.086 ; gain = 0.000
+reset_run impl_1
+launch_runs impl_1
+[Thu Jun 07 21:06:07 2018] Launched impl_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/impl_1/runme.log
+launch_simulation -mode post-implementation -type functional
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2015.2
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 973.094 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 973.094 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:16 ; elapsed = 00:00:09 . Memory (MB): peak = 1059.500 ; gain = 289.414
+INFO: [USF-XSim-32] Writing simulation netlist file for design 'impl_1'...
+INFO: [USF-XSim-92] write_verilog -mode funcsim -nolib -force -file "E:/QQ文件/c_2/c_2.sim/sim_1/impl/func/c_fz_func_impl.v"
+INFO: [USF-XSim-34] Netlist generated:E:/QQ文件/c_2/c_2.sim/sim_1/impl/func/c_fz_func_impl.v
+INFO: [USF-XSim-37] Inspecting design source files for 'c_fz' in fileset 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/impl/func'
+"xvlog -m64 --relax -prj c_fz_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.sim/sim_1/impl/func/c_fz_func_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sim_1/new/c_fz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_fz
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.sim/sim_1/impl/func/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+WARNING: [VRFC 10-1195] overwriting previous definition of module glbl [E:/QQ文件/c_2/c_2.sim/sim_1/impl/func/glbl.v:6]
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/impl/func'
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: D:/XILINX/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto b67c3117392541f4808a4a38bf12dfb5 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L secureip --snapshot c_fz_func_impl xil_defaultlib.c_fz xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.BUFG
+Compiling module unisims_ver.IBUF
+Compiling module unisims_ver.OBUF
+Compiling module unisims_ver.sffsrce_fdre
+Compiling module unisims_ver.FDRE
+Compiling module xil_defaultlib.c
+Compiling module xil_defaultlib.c_fz
+Compiling module xil_defaultlib.glbl
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot c_fz_func_impl
+
+****** Webtalk v2015.2 (64-bit)
+  **** SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+  **** IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+    ** Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+
+source E:/QQ文件/c_2/c_2.sim/sim_1/impl/func/xsim.dir/c_fz_func_impl/webtalk/xsim_webtalk.tcl -notrace
+webtalk_transmit: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 62.281 ; gain = 0.023
+
+    while executing
+"webtalk_transmit -clientid 2608030697 -regid "211544571_0_0_448" -xml E:/QQ文件/c_2/c_2.sim/sim_1/impl/func/xsim.dir/c_fz_func_impl/webtalk/usage_st..."
+    (file "E:/QQ文件/c_2/c_2.sim/sim_1/impl/func/xsim.dir/c_fz_func_impl/webtalk/xsim_webtalk.tcl" line 41)
+INFO: [Common 17-206] Exiting Webtalk at Thu Jun 07 21:07:56 2018...
+run_program: Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1153.895 ; gain = 39.559
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/impl/func'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "c_fz_func_impl -key {Post-Implementation:sim_1:Functional:c_fz} -tclbatch {c_fz.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2015.2
+Time resolution is 1 ps
+source c_fz.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 5000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'c_fz_func_impl' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 5000ns
+launch_simulation: Time (s): cpu = 00:00:43 ; elapsed = 00:00:28 . Memory (MB): peak = 1438.555 ; gain = 668.469
+launch_runs impl_1 -to_step write_bitstream
+[Thu Jun 07 21:10:38 2018] Launched impl_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/impl_1/runme.log
+reset_run impl_1 -prev_step 
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1443.895 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 1443.895 ; gain = 0.000
+add_files -fileset constrs_1 -norecurse E:/QQ文件/c_2/c_2.srcs/constrs_1/new/lab1_nexys4.xdc
+remove_files -fileset constrs_1 E:/QQ文件/c_2/c_2.srcs/constrs_1/new/c_con.xdc
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Thu Jun 07 21:15:05 2018] Launched synth_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/synth_1/runme.log
+[Thu Jun 07 21:15:05 2018] Launched impl_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Thu Jun 07 21:20:08 2018] Launched synth_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/synth_1/runme.log
+[Thu Jun 07 21:20:08 2018] Launched impl_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/impl_1/runme.log
+close [ open E:/QQ文件/c_2/c_2.srcs/sources_1/new/div.v w ]
+add_files E:/QQ文件/c_2/c_2.srcs/sources_1/new/div.v
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'c_fz' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+"xvlog -m64 --relax -prj c_fz_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c
+WARNING: [VRFC 10-1315] redeclaration of ansi port q1 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:30]
+WARNING: [VRFC 10-1315] redeclaration of ansi port q2 is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:31]
+WARNING: [VRFC 10-1315] redeclaration of ansi port sig_syn is not allowed [E:/QQ文件/c_2/c_2.srcs/sources_1/new/c.v:32]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.srcs/sim_1/new/c_fz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module c_fz
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/QQ文件/c_2/c_2.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: D:/XILINX/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto b67c3117392541f4808a4a38bf12dfb5 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot c_fz_behav xil_defaultlib.c_fz xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.c
+Compiling module xil_defaultlib.c_fz
+Compiling module xil_defaultlib.glbl
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot c_fz_behav
+
+****** Webtalk v2015.2 (64-bit)
+  **** SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+  **** IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+    ** Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+
+source E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'E:/QQ文件/c_2/c_2.sim/sim_1/behav/xsim.dir/c_fz_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Thu Jun 07 21:30:28 2018. For additional details about this file, please refer to the WebTalk help file at D:/XILINX/Vivado/2015.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Thu Jun 07 21:30:28 2018...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:13 . Memory (MB): peak = 1451.609 ; gain = 0.000
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/QQ文件/c_2/c_2.sim/sim_1/behav'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "c_fz_behav -key {Behavioral:sim_1:Functional:c_fz} -tclbatch {c_fz.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2015.2
+Time resolution is 1 ps
+source c_fz.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 5000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'c_fz_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 5000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:17 . Memory (MB): peak = 1451.609 ; gain = 0.000
+reset_run synth_1
+launch_runs impl_1
+[Thu Jun 07 21:31:05 2018] Launched synth_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/synth_1/runme.log
+[Thu Jun 07 21:31:05 2018] Launched impl_1...
+Run output will be captured here: E:/QQ文件/c_2/c_2.runs/impl_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 1459.844 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 07 21:32:33 2018...

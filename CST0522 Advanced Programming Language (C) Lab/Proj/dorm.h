@@ -17,184 +17,184 @@
 #ifndef TYPE_H_INCLUDED
 #define TYPE_H_INCLUDED
 
-#define SCR_ROW 50              /*ÆÁÄ»ĞĞÊı*/
-#define SCR_COL 80             /*ÆÁÄ»ÁĞÊı*/
+#define SCR_ROW 50              /*å±å¹•è¡Œæ•°*/
+#define SCR_COL 80             /*å±å¹•åˆ—æ•°*/
 /**
- *ÔºÏµĞÅÏ¢Á´½áµã½á¹¹
+ *é™¢ç³»ä¿¡æ¯é“¾ç»“ç‚¹ç»“æ„
  */
 typedef struct school_info{
-    char school_name[20], leader[12], contact_num[15];      /*ÔºÏµÃû³Æ£¬ÔºÏµ¸ºÔğÈË£¬ÁªÏµ·½Ê½*/
-    unsigned short num_proj, num_973, num_863,q_count;     /*ÔºÏµÏÂ×ÜÏîÄ¿Êı£¨Í³¼ÆÓÃ£©£¬973ÏîÄ¿Êı£¬863ÏîÄ¿Êı£¬×ÜÍÅ¶ÓÊı*/
-    float sum_teacher, sum_student, proportion, budget;     /*¸÷ÍÅ¶Ó½ÌÊ¦×ÜÊı£¬ÑĞ¾¿Éú×ÜÊı£¬ÑĞ¾¿ÉúÓë½ÌÊ¦ÈËÊı±È£¬×ÜÔ¤Ëã*/
+    char school_name[20], leader[12], contact_num[15];      /*é™¢ç³»åç§°ï¼Œé™¢ç³»è´Ÿè´£äººï¼Œè”ç³»æ–¹å¼*/
+    unsigned short num_proj, num_973, num_863,q_count;     /*é™¢ç³»ä¸‹æ€»é¡¹ç›®æ•°ï¼ˆç»Ÿè®¡ç”¨ï¼‰ï¼Œ973é¡¹ç›®æ•°ï¼Œ863é¡¹ç›®æ•°ï¼Œæ€»å›¢é˜Ÿæ•°*/
+    float sum_teacher, sum_student, proportion, budget;     /*å„å›¢é˜Ÿæ•™å¸ˆæ€»æ•°ï¼Œç ”ç©¶ç”Ÿæ€»æ•°ï¼Œç ”ç©¶ç”Ÿä¸æ•™å¸ˆäººæ•°æ¯”ï¼Œæ€»é¢„ç®—*/
     struct school_info *next;
     struct team_info *team_head;
 }SCHOOL_NODE;
 
 /**
- *¿ÆÑĞÍÅ¶ÓĞÅÏ¢Á´½áµã½á¹¹
+ *ç§‘ç ”å›¢é˜Ÿä¿¡æ¯é“¾ç»“ç‚¹ç»“æ„
  */
 typedef struct team_info{
-    char team_name[30], leader[12], school_name[20];        /*ÍÅ¶ÓÃû³Æ£¬ÍÅ¶Ó¸ºÔğÈË£¬ËùÊôÔºÏµÃû³Æ*/
-    int teacher_num, stu_num;                               /*½ÌÊ¦ÊıÁ¿£¬ÑĞ¾¿ÉúÊıÁ¿*/
-    unsigned short proj_num, projsci_num,r_count;          /*¿ÆÑĞÏîÄ¿Êı£¨Í³¼ÆÓÃ£©£¬¹ú¼Ò×ÔÈ»¿ÆÑ§»ù½ğÏîÄ¿Êı*/
-    float proj_budget, proportion;                          /*¹ú¼Ò×ÔÈ»¿ÆÑ§»ù½ğÏîÄ¿×Ü¾­·Ñ£¬¿ÆÑĞÏîÄ¿Óë½ÌÊ¦ÈËÊı±ÈÖµ£¬¿ÆÑĞÏîÄ¿Êı£¨µ¼ÈëÊı¾İÓÃ£©*/
+    char team_name[30], leader[12], school_name[20];        /*å›¢é˜Ÿåç§°ï¼Œå›¢é˜Ÿè´Ÿè´£äººï¼Œæ‰€å±é™¢ç³»åç§°*/
+    int teacher_num, stu_num;                               /*æ•™å¸ˆæ•°é‡ï¼Œç ”ç©¶ç”Ÿæ•°é‡*/
+    unsigned short proj_num, projsci_num,r_count;          /*ç§‘ç ”é¡¹ç›®æ•°ï¼ˆç»Ÿè®¡ç”¨ï¼‰ï¼Œå›½å®¶è‡ªç„¶ç§‘å­¦åŸºé‡‘é¡¹ç›®æ•°*/
+    float proj_budget, proportion;                          /*å›½å®¶è‡ªç„¶ç§‘å­¦åŸºé‡‘é¡¹ç›®æ€»ç»è´¹ï¼Œç§‘ç ”é¡¹ç›®ä¸æ•™å¸ˆäººæ•°æ¯”å€¼ï¼Œç§‘ç ”é¡¹ç›®æ•°ï¼ˆå¯¼å…¥æ•°æ®ç”¨ï¼‰*/
     struct team_info *next;
     struct project_info *proj_head;
 }TEAM_NODE;
 
 /**
- *¿ÆÑĞÏîÄ¿ĞÅÏ¢Á´½áµã½á¹¹
+ *ç§‘ç ”é¡¹ç›®ä¿¡æ¯é“¾ç»“ç‚¹ç»“æ„
  */
 typedef struct project_info{
-    char project_num[15], type, open_time[8], leader[12], team_name[30];    /*ÏîÄ¿±àºÅ£¬ÏîÄ¿ÖÖÀà£¬¿ªÊ¼Ê±¼ä£¬ÏîÄ¿¸ºÔğÈË£¬ÍÅ¶ÓÃû³Æ*/
-    float budget;                                                           /*ÏîÄ¿Ô¤Ëã*/
+    char project_num[15], type, open_time[8], leader[12], team_name[30];    /*é¡¹ç›®ç¼–å·ï¼Œé¡¹ç›®ç§ç±»ï¼Œå¼€å§‹æ—¶é—´ï¼Œé¡¹ç›®è´Ÿè´£äººï¼Œå›¢é˜Ÿåç§°*/
+    float budget;                                                           /*é¡¹ç›®é¢„ç®—*/
     struct project_info *next;
 }PROJECT_NODE;
 
 /**
- *ÍÅ¶Ó¸ºÔğÈËĞÅÏ¢Á´½áµã½á¹¹
+ *å›¢é˜Ÿè´Ÿè´£äººä¿¡æ¯é“¾ç»“ç‚¹ç»“æ„
  */
-typedef struct leader{                                      /*(×·¼Ó¹¦ÄÜ×¨ÓÃ)*/
-    char leader[12];                                        /*ÍÅ¶Ó¸ºÔğÈËĞÕÃû*/
-    unsigned short n;                                       /*¶ÔÓ¦¸ºÔğµÄÏîÄ¿ÊıÁ¿*/
+typedef struct leader{                                      /*(è¿½åŠ åŠŸèƒ½ä¸“ç”¨)*/
+    char leader[12];                                        /*å›¢é˜Ÿè´Ÿè´£äººå§“å*/
+    unsigned short n;                                       /*å¯¹åº”è´Ÿè´£çš„é¡¹ç›®æ•°é‡*/
     struct leader *next;
 }LEADER_NODE;
 
 /**
- *ÆÁÄ»´°¿ÚĞÅÏ¢Á´½áµã½áµã½á¹¹
+ *å±å¹•çª—å£ä¿¡æ¯é“¾ç»“ç‚¹ç»“ç‚¹ç»“æ„
  */
 typedef struct layer_node {
-    char LayerNo;            /**< µ¯³ö´°¿Ú²ãÊı*/
-    SMALL_RECT rcArea;       /**< µ¯³ö´°¿ÚÇøÓò×ø±ê*/
-    CHAR_INFO *pContent;     /**< µ¯³ö´°¿ÚÇøÓò×Ö·ûµ¥ÔªÔ­ĞÅÏ¢´æ´¢»º³åÇø*/
-    char *pScrAtt;           /**< µ¯³ö´°¿ÚÇøÓò×Ö·ûµ¥ÔªÔ­ÊôĞÔÖµ´æ´¢»º³åÇø*/
-    struct layer_node *next; /**< Ö¸ÏòÏÂÒ»½áµãµÄÖ¸Õë*/
+    char LayerNo;            /**< å¼¹å‡ºçª—å£å±‚æ•°*/
+    SMALL_RECT rcArea;       /**< å¼¹å‡ºçª—å£åŒºåŸŸåæ ‡*/
+    CHAR_INFO *pContent;     /**< å¼¹å‡ºçª—å£åŒºåŸŸå­—ç¬¦å•å…ƒåŸä¿¡æ¯å­˜å‚¨ç¼“å†²åŒº*/
+    char *pScrAtt;           /**< å¼¹å‡ºçª—å£åŒºåŸŸå­—ç¬¦å•å…ƒåŸå±æ€§å€¼å­˜å‚¨ç¼“å†²åŒº*/
+    struct layer_node *next; /**< æŒ‡å‘ä¸‹ä¸€ç»“ç‚¹çš„æŒ‡é’ˆ*/
 } LAYER_NODE;
 
 /**
- *±êÇ©Êø½á¹¹
+ *æ ‡ç­¾æŸç»“æ„
  */
 typedef struct labe1_bundle {
-    char **ppLabel;        /**< ±êÇ©×Ö·û´®Êı×éÊ×µØÖ·*/
-    COORD *pLoc;           /**< ±êÇ©¶¨Î»Êı×éÊ×µØÖ·*/
-    int num;               /**< ±êÇ©¸öÊı*/
+    char **ppLabel;        /**< æ ‡ç­¾å­—ç¬¦ä¸²æ•°ç»„é¦–åœ°å€*/
+    COORD *pLoc;           /**< æ ‡ç­¾å®šä½æ•°ç»„é¦–åœ°å€*/
+    int num;               /**< æ ‡ç­¾ä¸ªæ•°*/
 } LABEL_BUNDLE;
 
 /**
- *ÈÈÇø½á¹¹
+ *çƒ­åŒºç»“æ„
  */
 typedef struct hot_area {
-    SMALL_RECT *pArea;     /**< ÈÈÇø¶¨Î»Êı×éÊ×µØÖ·*/
-    char *pSort;           /**< ÈÈÇøÀà±ğ(°´¼ü¡¢ÎÄ±¾¿ò¡¢Ñ¡Ïî¿ò)Êı×éÊ×µØÖ·*/
-    char *pTag;            /**< ÈÈÇøĞòºÅÊı×éÊ×µØÖ·*/
-    int num;               /**< ÈÈÇø¸öÊı*/
+    SMALL_RECT *pArea;     /**< çƒ­åŒºå®šä½æ•°ç»„é¦–åœ°å€*/
+    char *pSort;           /**< çƒ­åŒºç±»åˆ«(æŒ‰é”®ã€æ–‡æœ¬æ¡†ã€é€‰é¡¹æ¡†)æ•°ç»„é¦–åœ°å€*/
+    char *pTag;            /**< çƒ­åŒºåºå·æ•°ç»„é¦–åœ°å€*/
+    int num;               /**< çƒ­åŒºä¸ªæ•°*/
 } HOT_AREA;
 
-LAYER_NODE *gp_top_layer = NULL;               /*µ¯³ö´°¿ÚĞÅÏ¢Á´Á´Í·*/
+LAYER_NODE *gp_top_layer = NULL;               /*å¼¹å‡ºçª—å£ä¿¡æ¯é“¾é“¾å¤´*/
 
-char *gp_sys_name = "¿ÆÑĞÏîÄ¿ĞÅÏ¢¹ÜÀíÏµÍ³";    /*ÏµÍ³Ãû³Æ*/
+char *gp_sys_name = "ç§‘ç ”é¡¹ç›®ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ";    /*ç³»ç»Ÿåç§°*/
 
-char *ga_main_menu[] = {"ÎÄ¼ş(F)",             /*ÏµÍ³Ö÷²Ëµ¥Ãû*/
-    	                "Êı¾İÎ¬»¤(M)",
-                        "Êı¾İ²éÑ¯(Q)",
-                        "Êı¾İÍ³¼Æ(S)",
-                        "°ïÖú(H)"
+char *ga_main_menu[] = {"æ–‡ä»¶(F)",             /*ç³»ç»Ÿä¸»èœå•å*/
+    	                "æ•°æ®ç»´æŠ¤(M)",
+                        "æ•°æ®æŸ¥è¯¢(Q)",
+                        "æ•°æ®ç»Ÿè®¡(S)",
+                        "å¸®åŠ©(H)"
                        };
 
-char *ga_sub_menu[] = {"[S] Êı¾İ±£´æ",          /*ÏµÍ³×Ó²Ëµ¥Ãû*/
-                       "[B] Êı¾İ±¸·İ",
-                       "[R] Êı¾İ»Ö¸´",
-                       "[X] ÍË³ö    Alt+X",
-                       "[S] ÔºÏµĞÅÏ¢",
-                       "[T] ¿ÆÑĞÍÅ¶ÓĞÅÏ¢",
-                       "[P] ¿ÆÑĞÏîÄ¿ĞÅÏ¢",
-                       "[S] ÔºÏµĞÅÏ¢",
-                       "[T] ¿ÆÑĞÍÅ¶ÓĞÅÏ¢",
-                       "[P] ¿ÆÑĞÏîÄ¿ĞÅÏ¢",
-                       "[I] Ê¦ÉúÈËÊı±È",
-                       "[T] ¿ÆÑĞÏîÄ¿Êı-ÔºÏµ",
-                       "[C] ×Ô¿Æ»ù½ğÏîÄ¿Êı-ÍÅ¶Ó",
-                       "[U] ÏîÄ¿/½ÌÊ¦ÈËÊı±È",
-                       "[P] ¸ºÔğÈËÁìµ¼ÏîÄ¿Çé¿ö",
-                       "[T] °ïÖúÖ÷Ìâ",
+char *ga_sub_menu[] = {"[S] æ•°æ®ä¿å­˜",          /*ç³»ç»Ÿå­èœå•å*/
+                       "[B] æ•°æ®å¤‡ä»½",
+                       "[R] æ•°æ®æ¢å¤",
+                       "[X] é€€å‡º    Alt+X",
+                       "[S] é™¢ç³»ä¿¡æ¯",
+                       "[T] ç§‘ç ”å›¢é˜Ÿä¿¡æ¯",
+                       "[P] ç§‘ç ”é¡¹ç›®ä¿¡æ¯",
+                       "[S] é™¢ç³»ä¿¡æ¯",
+                       "[T] ç§‘ç ”å›¢é˜Ÿä¿¡æ¯",
+                       "[P] ç§‘ç ”é¡¹ç›®ä¿¡æ¯",
+                       "[I] å¸ˆç”Ÿäººæ•°æ¯”",
+                       "[T] ç§‘ç ”é¡¹ç›®æ•°-é™¢ç³»",
+                       "[C] è‡ªç§‘åŸºé‡‘é¡¹ç›®æ•°-å›¢é˜Ÿ",
+                       "[U] é¡¹ç›®/æ•™å¸ˆäººæ•°æ¯”",
+                       "[P] è´Ÿè´£äººé¢†å¯¼é¡¹ç›®æƒ…å†µ",
+                       "[T] å¸®åŠ©ä¸»é¢˜",
                        "",
-                       "[A] ¹ØÓÚ..."
+                       "[A] å…³äº..."
                       };
 
-int ga_sub_menu_count[] = {4, 3, 3, 5, 3};  /*¸÷Ö÷²Ëµ¥ÏîÏÂ×Ó²Ëµ¥µÄ¸öÊı*/
-int gi_sel_menu = 1;                        /*±»Ñ¡ÖĞµÄÖ÷²Ëµ¥ÏîºÅ,³õÊ¼Îª1*/
-int gi_sel_sub_menu = 0;                    /*±»Ñ¡ÖĞµÄ×Ó²Ëµ¥ÏîºÅ,³õÊ¼Îª0,±íÊ¾Î´Ñ¡ÖĞ*/
+int ga_sub_menu_count[] = {4, 3, 3, 5, 3};  /*å„ä¸»èœå•é¡¹ä¸‹å­èœå•çš„ä¸ªæ•°*/
+int gi_sel_menu = 1;                        /*è¢«é€‰ä¸­çš„ä¸»èœå•é¡¹å·,åˆå§‹ä¸º1*/
+int gi_sel_sub_menu = 0;                    /*è¢«é€‰ä¸­çš„å­èœå•é¡¹å·,åˆå§‹ä¸º0,è¡¨ç¤ºæœªé€‰ä¸­*/
 
-CHAR_INFO *gp_buff_menubar_info = NULL;     /*´æ·Å²Ëµ¥ÌõÆÁÄ»Çø×Ö·ûĞÅÏ¢µÄ»º³åÇø*/
-CHAR_INFO *gp_buff_stateBar_info = NULL;    /*´æ·Å×´Ì¬ÌõÆÁÄ»Çø×Ö·ûĞÅÏ¢µÄ»º³åÇø*/
+CHAR_INFO *gp_buff_menubar_info = NULL;     /*å­˜æ”¾èœå•æ¡å±å¹•åŒºå­—ç¬¦ä¿¡æ¯çš„ç¼“å†²åŒº*/
+CHAR_INFO *gp_buff_stateBar_info = NULL;    /*å­˜æ”¾çŠ¶æ€æ¡å±å¹•åŒºå­—ç¬¦ä¿¡æ¯çš„ç¼“å†²åŒº*/
 
-char *gp_scr_att = NULL;    /*´æ·ÅÆÁÄ»ÉÏ×Ö·ûµ¥ÔªÊôĞÔÖµµÄ»º³åÇø*/
-char gc_sys_state = '\0';   /*ÓÃÀ´±£´æÏµÍ³×´Ì¬µÄ×Ö·û*/
+char *gp_scr_att = NULL;    /*å­˜æ”¾å±å¹•ä¸Šå­—ç¬¦å•å…ƒå±æ€§å€¼çš„ç¼“å†²åŒº*/
+char gc_sys_state = '\0';   /*ç”¨æ¥ä¿å­˜ç³»ç»ŸçŠ¶æ€çš„å­—ç¬¦*/
 
-HANDLE gh_std_out;          /*±ê×¼Êä³öÉè±¸¾ä±ú*/
-HANDLE gh_std_in;           /*±ê×¼ÊäÈëÉè±¸¾ä±ú*/
+HANDLE gh_std_out;          /*æ ‡å‡†è¾“å‡ºè®¾å¤‡å¥æŸ„*/
+HANDLE gh_std_in;           /*æ ‡å‡†è¾“å…¥è®¾å¤‡å¥æŸ„*/
 
-void InitInterface(void);                                       /*ÏµÍ³½çÃæ³õÊ¼»¯*/
-void ClearScreen(void);                                         /*ÇåÆÁ*/
-void ShowMenu(void);                                            /*ÏÔÊ¾²Ëµ¥À¸*/
-void PopMenu(int num);                                          /*ÏÔÊ¾ÏÂÀ­²Ëµ¥*/
-void PopPrompt(int num);                                        /*ÏÔÊ¾µ¯³ö´°¿Ú*/
-void PopUp(SMALL_RECT *, WORD, LABEL_BUNDLE *, HOT_AREA *);     /*µ¯³ö´°¿ÚÆÁÄ»ĞÅÏ¢Î¬»¤*/
-void PopOff(void);                                              /*¹Ø±Õ¶¥²ãµ¯³ö´°¿Ú*/
-void DrawBox(SMALL_RECT *parea);                                /*»æÖÆ±ß¿ò*/
-void LocSubMenu(int num, SMALL_RECT *parea);                    /*Ö÷²Ëµ¥ÏÂÀ­²Ëµ¥¶¨Î»*/
-void ShowState(void);                                           /*ÏÔÊ¾×´Ì¬À¸*/
-void TagMainMenu(int num);                                      /*±ê¼Ç±»Ñ¡ÖĞµÄÖ÷²Ëµ¥Ïî*/
-void TagSubMenu(int num);                                       /*±ê¼Ç±»Ñ¡ÖĞµÄ×Ó²Ëµ¥Ïî*/
-int DealConInput(HOT_AREA *phot_area, int *pihot_num);          /*¿ØÖÆÌ¨ÊäÈë´¦Àí*/
-void SetHotPoint(HOT_AREA *phot_area, int hot_num);             /*ÉèÖÃÈÈÇø*/
-BOOL ShowModule(char **pString, int n);                         /*µ¯³öĞÅÏ¢´°¿Ú*/
-BOOL Message(char **);                                          /*µ¯³öÌáÊ¾´°¿Ú*/
+void InitInterface(void);                                       /*ç³»ç»Ÿç•Œé¢åˆå§‹åŒ–*/
+void ClearScreen(void);                                         /*æ¸…å±*/
+void ShowMenu(void);                                            /*æ˜¾ç¤ºèœå•æ */
+void PopMenu(int num);                                          /*æ˜¾ç¤ºä¸‹æ‹‰èœå•*/
+void PopPrompt(int num);                                        /*æ˜¾ç¤ºå¼¹å‡ºçª—å£*/
+void PopUp(SMALL_RECT *, WORD, LABEL_BUNDLE *, HOT_AREA *);     /*å¼¹å‡ºçª—å£å±å¹•ä¿¡æ¯ç»´æŠ¤*/
+void PopOff(void);                                              /*å…³é—­é¡¶å±‚å¼¹å‡ºçª—å£*/
+void DrawBox(SMALL_RECT *parea);                                /*ç»˜åˆ¶è¾¹æ¡†*/
+void LocSubMenu(int num, SMALL_RECT *parea);                    /*ä¸»èœå•ä¸‹æ‹‰èœå•å®šä½*/
+void ShowState(void);                                           /*æ˜¾ç¤ºçŠ¶æ€æ */
+void TagMainMenu(int num);                                      /*æ ‡è®°è¢«é€‰ä¸­çš„ä¸»èœå•é¡¹*/
+void TagSubMenu(int num);                                       /*æ ‡è®°è¢«é€‰ä¸­çš„å­èœå•é¡¹*/
+int DealConInput(HOT_AREA *phot_area, int *pihot_num);          /*æ§åˆ¶å°è¾“å…¥å¤„ç†*/
+void SetHotPoint(HOT_AREA *phot_area, int hot_num);             /*è®¾ç½®çƒ­åŒº*/
+BOOL ShowModule(char **pString, int n);                         /*å¼¹å‡ºä¿¡æ¯çª—å£*/
+BOOL Message(char **);                                          /*å¼¹å‡ºæç¤ºçª—å£*/
 
-void RunSys(void);                                              /*ÏµÍ³¹¦ÄÜÄ£¿éµÄÑ¡ÔñºÍÔËĞĞ*/
-BOOL ExeFunction(int main_menu_num, int sub_menu_num);          /*¹¦ÄÜÄ£¿éµÄµ÷ÓÃ*/
-void CloseSys(void);                                            /*ÍË³öÏµÍ³*/
-void ClearMemory(void);                                         /*Çå¿ÕÄÚ´æÊı¾İ*/
+void RunSys(void);                                              /*ç³»ç»ŸåŠŸèƒ½æ¨¡å—çš„é€‰æ‹©å’Œè¿è¡Œ*/
+BOOL ExeFunction(int main_menu_num, int sub_menu_num);          /*åŠŸèƒ½æ¨¡å—çš„è°ƒç”¨*/
+void CloseSys(void);                                            /*é€€å‡ºç³»ç»Ÿ*/
+void ClearMemory(void);                                         /*æ¸…ç©ºå†…å­˜æ•°æ®*/
 
-BOOL MaintainSchoolInfo(void);   /*Î¬»¤ÔºÏµĞÅÏ¢*/
-BOOL MaintainTeamInfo(void);    /*Î¬»¤¿ÆÑĞÍÅ¶ÓĞÅÏ¢*/
-BOOL MaintainProjectInfo(void); /*Î¬»¤¿ÆÑĞÏîÄ¿ĞÅÏ¢*/
-BOOL AddSchool(void);           /*Ìí¼ÓÔºÏµ*/
-BOOL AddTeam(void);             /*Ìí¼ÓÍÅ¶Ó*/
-BOOL AddProject(void);          /*Ìí¼ÓÏîÄ¿*/
-BOOL AltSchool(void);           /*ĞŞ¸ÄÔºÏµ*/
-BOOL AltTeam(void);             /*ĞŞ¸ÄÍÅ¶Ó*/
-BOOL AltProject(void);          /*ĞŞ¸ÄÏîÄ¿*/
-BOOL DeleteSchool(void);        /*É¾³ıÔºÏµ*/
-BOOL DeleteTeam(void);          /*É¾³ıÍÅ¶Ó*/
-BOOL DeleteProject(void);       /*É¾³ıÏîÄ¿*/
+BOOL MaintainSchoolInfo(void);   /*ç»´æŠ¤é™¢ç³»ä¿¡æ¯*/
+BOOL MaintainTeamInfo(void);    /*ç»´æŠ¤ç§‘ç ”å›¢é˜Ÿä¿¡æ¯*/
+BOOL MaintainProjectInfo(void); /*ç»´æŠ¤ç§‘ç ”é¡¹ç›®ä¿¡æ¯*/
+BOOL AddSchool(void);           /*æ·»åŠ é™¢ç³»*/
+BOOL AddTeam(void);             /*æ·»åŠ å›¢é˜Ÿ*/
+BOOL AddProject(void);          /*æ·»åŠ é¡¹ç›®*/
+BOOL AltSchool(void);           /*ä¿®æ”¹é™¢ç³»*/
+BOOL AltTeam(void);             /*ä¿®æ”¹å›¢é˜Ÿ*/
+BOOL AltProject(void);          /*ä¿®æ”¹é¡¹ç›®*/
+BOOL DeleteSchool(void);        /*åˆ é™¤é™¢ç³»*/
+BOOL DeleteTeam(void);          /*åˆ é™¤å›¢é˜Ÿ*/
+BOOL DeleteProject(void);       /*åˆ é™¤é¡¹ç›®*/
 
-BOOL SeekSchool(void);    /*²éÕÒÔºÏµ*/
-BOOL SeekTeam(void);      /*²éÕÒÍÅ¶Ó*/
-BOOL SeekProject(void);   /*²éÕÒÏîÄ¿*/
-BOOL TeachStuProp(void);    /*¸÷ÔºÏµ½ÌÊ¦×ÜÊı£¬ÑĞ¾¿Éú×ÜÊı¼°ÑĞ¾¿ÉúÓë½ÌÊ¦µÄÈËÊı±È*/
-BOOL ProjectTotal(void);    /*¸÷ÔºÏµ¿ÆÑĞÏîÄ¿Êı£¬973 ÏîÄ¿Êı£¬863 ÏîÄ¿Êı¼°¿ÆÑĞ×Ü¾­·Ñ*/
-BOOL TeamOfMostNSFC(void);  /*¹ú¼Ò×ÔÈ»¿ÆÑ§»ù½ğµÄ¿ÆÑĞÏîÄ¿Êı×î¶àµÄ10 ¸ö¿ÆÑĞÍÅ¶Ó*/
-BOOL ProjTeachProp(void);   /*¿ÆÑĞÏîÄ¿ÊıºÍ½ÌÊ¦ÈËÊı±ÈÖµ×î¸ßµÄ5 ¸ö¿ÆÑĞÍÅ¶Ó*/
-BOOL LeaderOfProj(void);    /*ÔÚÌØ¶¨ÔºÏµÄÚ°´¸ºÔğÈË¸ºÔğÏîÄ¿µÄ¶àÉÙ½µĞòÅÅĞò£¨¸½¼Ó£©*/
+BOOL SeekSchool(void);    /*æŸ¥æ‰¾é™¢ç³»*/
+BOOL SeekTeam(void);      /*æŸ¥æ‰¾å›¢é˜Ÿ*/
+BOOL SeekProject(void);   /*æŸ¥æ‰¾é¡¹ç›®*/
+BOOL TeachStuProp(void);    /*å„é™¢ç³»æ•™å¸ˆæ€»æ•°ï¼Œç ”ç©¶ç”Ÿæ€»æ•°åŠç ”ç©¶ç”Ÿä¸æ•™å¸ˆçš„äººæ•°æ¯”*/
+BOOL ProjectTotal(void);    /*å„é™¢ç³»ç§‘ç ”é¡¹ç›®æ•°ï¼Œ973 é¡¹ç›®æ•°ï¼Œ863 é¡¹ç›®æ•°åŠç§‘ç ”æ€»ç»è´¹*/
+BOOL TeamOfMostNSFC(void);  /*å›½å®¶è‡ªç„¶ç§‘å­¦åŸºé‡‘çš„ç§‘ç ”é¡¹ç›®æ•°æœ€å¤šçš„10 ä¸ªç§‘ç ”å›¢é˜Ÿ*/
+BOOL ProjTeachProp(void);   /*ç§‘ç ”é¡¹ç›®æ•°å’Œæ•™å¸ˆäººæ•°æ¯”å€¼æœ€é«˜çš„5 ä¸ªç§‘ç ”å›¢é˜Ÿ*/
+BOOL LeaderOfProj(void);    /*åœ¨ç‰¹å®šé™¢ç³»å†…æŒ‰è´Ÿè´£äººè´Ÿè´£é¡¹ç›®çš„å¤šå°‘é™åºæ’åºï¼ˆé™„åŠ ï¼‰*/
 
-int LoadCode(char *filename, char **ppbuffer);  /*´úÂë±í¼ÓÔØ*/
-BOOL LoadData(void);                            /*Êı¾İ¼ÓÔØ*/
-int CreatList();                                /*Êı¾İÁ´±í³õÊ¼»¯*/
-BOOL FileOut(void);                             /*Êı¾İ¼ÓÔØ*/
-BOOL FileIn(void);                              /*±£´æÊı¾İ*/
-BOOL BackupData(void);                          /*±¸·İÊı¾İ*/
-BOOL RestoreData(void);                         /*»Ö¸´Êı¾İ*/
-BOOL Print(void);                               /*ÆÁÄ»Êä³ö±¨±í*/
-BOOL ExitSys(void);                             /*ÍË³öÏµÍ³*/
-BOOL HelpTopic(void);                           /*°ïÖúÖ÷Ìå*/
-BOOL AboutDorm(void);                           /*¹ØÓÚÏµÍ³*/
+int LoadCode(char *filename, char **ppbuffer);  /*ä»£ç è¡¨åŠ è½½*/
+BOOL LoadData(void);                            /*æ•°æ®åŠ è½½*/
+int CreatList();                                /*æ•°æ®é“¾è¡¨åˆå§‹åŒ–*/
+BOOL FileOut(void);                             /*æ•°æ®åŠ è½½*/
+BOOL FileIn(void);                              /*ä¿å­˜æ•°æ®*/
+BOOL BackupData(void);                          /*å¤‡ä»½æ•°æ®*/
+BOOL RestoreData(void);                         /*æ¢å¤æ•°æ®*/
+BOOL Print(void);                               /*å±å¹•è¾“å‡ºæŠ¥è¡¨*/
+BOOL ExitSys(void);                             /*é€€å‡ºç³»ç»Ÿ*/
+BOOL HelpTopic(void);                           /*å¸®åŠ©ä¸»ä½“*/
+BOOL AboutDorm(void);                           /*å…³äºç³»ç»Ÿ*/
 
 unsigned short choice;
 char i, j, k, seek[30], flag, b=' ';
 SCHOOL_NODE *sch_head= NULL, *p, *p1, *p2, *prior1, *prior2, *t;
 TEAM_NODE *q, *q1, *q2, *qrior1, *qrior2, *head, *u;
 PROJECT_NODE *r, *r1, *r2;
-char *pError[]={"Î´ÕÒµ½Ä¿±êĞÅÏ¢£¡·µ»ØÖ÷²Ëµ¥£¿", "È·¶¨", "È¡Ïû"};
-char *pContinue[]={"·µ»ØÖ÷²Ëµ¥£¿", "È·¶¨", "È¡Ïû"};
+char *pError[]={"æœªæ‰¾åˆ°ç›®æ ‡ä¿¡æ¯ï¼è¿”å›ä¸»èœå•ï¼Ÿ", "ç¡®å®š", "å–æ¶ˆ"};
+char *pContinue[]={"è¿”å›ä¸»èœå•ï¼Ÿ", "ç¡®å®š", "å–æ¶ˆ"};
 #endif /**< TYPE_H_INCLUDED*/

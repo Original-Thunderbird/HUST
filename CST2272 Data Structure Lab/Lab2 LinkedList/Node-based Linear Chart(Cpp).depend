@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1515050674 source:d:\program files\dev-cpp\myprojects\node-based linear chart(cpp)\main.cpp
-	<stdio.h>
-	<malloc.h>
-	<stdlib.h>
-	<time.h>
-	<string.h>
-

@@ -17,8 +17,8 @@
 #ifndef TYPE_H_INCLUDED
 #define TYPE_H_INCLUDED
 
-#define SCR_ROW 60             /*屏幕行数*/
-#define SCR_COL 100             /*屏幕列数*/
+#define SCR_ROW 60
+#define SCR_COL 100
 #define LIST_INIT_SIZE 100
 #define LISTINCREMENT  10
 
@@ -26,10 +26,11 @@
  *在课时间压缩存储链表结点结构
  */
 typedef struct Occupy{
-    unsigned short week;    //上课周数
-    unsigned short time;    //上课节数
+    unsigned short week;
+    unsigned short time;
     struct Occupy *next;
 }Occupy;
+
 /**
  *在课时间压缩存储链表头结构
  */
@@ -42,65 +43,70 @@ typedef struct ochead{
  *教师结点结构
  */
 typedef struct{
-    char tname[20];                 //教师姓名
-    unsigned short gender, age;     //性别：女为0，男为1
-    Ochead ochead[6];               //教师占用情况,三维:星期-周-课堂
+    char tname[20];
+    unsigned short gender, age;     //gender：female:0，male:1
+    Ochead ochead[6];               //occupation of time slots. 3 dimentions: week-day in a week-timeslot
 }Teacher;
+
 /**
  *教师线性表头结构
  */
 typedef struct {
-    Teacher *elem;      //线性表
-    unsigned short length, listsize;    //表长，表容量
+    Teacher *elem;
+    unsigned short length, listsize;
 }TeList;
 
 /**
  *教室结点结构
  */
 typedef struct{
-    char code[20];              //教室编号
-    unsigned short rsize;       //教师容量
-    Ochead ochead[6];           //教室占用情况,三维:星期-周-课堂
+    char code[20];
+    unsigned short rsize;
+    Ochead ochead[6];
 }Room;
+
 /**
  *教室线性表头结构
  */
 typedef struct {
-    Room *elem;         //线性表
-    unsigned short length, listsize;    //表长，表容量
+    Room *elem;
+    unsigned short length, listsize;
 }RoList;
 
 /**
  *课程结点结构
  */
 typedef struct CouArc{
-	char *prename;              //先修课程名称
-	struct CouArc *nextarc;     //指向下一条弧的指针
-}CouArc;                        //先修关系结点结构
+	char *prename;
+	struct CouArc *nextarc;
+}CouArc; //pre-requisite
+
 /**
  *课程逆邻接表弧结点结构
  */
 typedef struct {
-    char name[60];              //课程名称
+    char name[60];
     unsigned short arcnum;
     CouArc *archead;            //先修课头指针
 }CouHead;
+
 /**
  *课程逆邻接表头结构
  */
-typedef struct {                        //课程逆邻接表头结构
+typedef struct {
 	CouHead *coulist;                   //逆邻接表
-	unsigned short length, listsize;    //总课程数目
+	unsigned short length, listsize;
 }CouGraph;
 
 /**
  *课堂结点结构
  */
 typedef struct Class{
-    char coursename[60], roomcode[20], tname[20];               //课堂名称,教室编号,教师姓名
+    char coursename[60], roomcode[20], tname[20];
     unsigned short cou_st, cou_ed, wk_st[5], wk_ed[5];          //开始节数,结束节数,开始周数,持续周数
     struct Class *next;
 }Class;
+
 /**
  *班级结点结构
  */
@@ -115,6 +121,7 @@ typedef struct Schedule{
     }week[6];                                   //周日无课，每周只用考虑六天
     struct Schedule *next;
 }Schedule;
+
 /**
  *班级链表头结构
  */
@@ -155,34 +162,34 @@ typedef struct hot_area {
 
 LAYER_NODE *gp_top_layer = NULL;               /*弹出窗口信息链链头*/
 
-char *gp_sys_name = "排课系统";    /*系统名称*/
+char *gp_sys_name = "University Course Arrangement & Scheduling System";    /*系统名称*/
 
-char *ga_main_menu[] = {"文件(F)",             /*系统主菜单名*/
-    	                "数据维护(M)",
-                        "数据查询(Q)",
-                        "数据统计(S)",
-                        "帮助(H)"
+char *ga_main_menu[] = {"File(F)",             /*系统主菜单名*/
+    	                  "Data Maintainance(M)",
+                        "Data Querying(Q)",
+                        "Gte Statistics(S)",
+                        "Help(H)"
                        };
 
-char *ga_sub_menu[] = {"[S] 数据备份",          /*系统子菜单名*/
-                       "[R] 数据恢复",
-                       "[X] 退出    Alt+X",
-                       "[S] 教师信息",
-                       "[T] 教室信息",
-                       "[P] 班级信息",
-                       "[S] 课程信息",
-                       "[U] 课堂信息",
-                       "[S] 教师信息",
-                       "[T] 教室信息",
-                       "[P] 班级信息",
-                       "[S] 课程信息",
-                       "[U] 课堂信息",
-                       "[G] 教室分析",
-                       "[T] 教师分析",
-                       "[C] 课堂分析",
-                       "[T] 帮助主题",
+char *ga_sub_menu[] = {"[S] Data Backup",          /*系统子菜单名*/
+                       "[R] Data Restore",
+                       "[X] Exit    Alt+X",
+                       "[S] Teacher Info",
+                       "[T] Room Info",
+                       "[P] Class Info",
+                       "[S] Course Info",
+                       "[U] Session Info",
+                       "[S] Teacher Info",
+                       "[T] Room Info",
+                       "[P] Class Info",
+                       "[S] Course Info",
+                       "[U] Session Info",
+                       "[G] Room Statistics",
+                       "[T] Teacher Statistics",
+                       "[C] Session Statistics",
+                       "[T] Help",
                        "",
-                       "[A] 关于..."
+                       "[A] About..."
                       };
 
 int ga_sub_menu_count[] = {3, 5, 5, 3, 3};  /*各主菜单项下子菜单的个数*/
@@ -282,6 +289,6 @@ unsigned short choice, hubuffer, buf1, buf2, buf3[5], buf4[5], buf5, buf6;
 unsigned char i, j, k, l, m, n, p, b=' ', count;
 char cbuffer[60], cbuf1[60], cbuf2[60];
 BOOL flag;
-char *pError[]={"未找到目标信息！返回主菜单？", "确定", "取消"};
-char *pContinue[]={"返回主菜单？", "确定", "取消"};
+char *pError[]={"Not FOund! Back to Main Menu?", "Yes", "No"};
+char *pContinue[]={"Back to Main Menu?", "Yes", "No"};
 #endif /**< TYPE_H_INCLUDED*/

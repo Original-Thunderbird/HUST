@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1513959042 source:d:\program files\dev-cpp\myprojects\bianry-tree-sample\main.cpp
-	<stdio.h>
-	<string.h>
-	<stdlib.h>
-	<malloc.h>
-	<time.h>
-

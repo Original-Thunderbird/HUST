@@ -14,18 +14,18 @@ using namespace std;
 #define LIST_INIT_SIZE 100
 #define LISTINCREMENT  10
 typedef int status;
-typedef int ElemType; //Êı¾İÔªËØÀàĞÍ¶¨Òå
-typedef struct{  //Ë³Ğò±í£¨Ë³Ğò½á¹¹£©µÄ¶¨Òå
+typedef int ElemType; //æ•°æ®å…ƒç´ ç±»å‹å®šä¹‰
+typedef struct{  //é¡ºåºè¡¨ï¼ˆé¡ºåºç»“æ„ï¼‰çš„å®šä¹‰
 	ElemType * elem;
 	int length;
 	int listsize;
 }SqList;
-//³¤Îª20µÄÊı×éÅĞ¶¨¶ÔÓ¦µÄ¸÷¸öÏßĞÔ±íÊÇ·ñ³õÊ¼»¯£¬TRUEÎªÒÑ³õÊ¼»¯£»FALSEÎªÎ´³õÊ¼»¯
-//volÓÃÓÚ¶¨Î»µ±Ç°²Ù×÷µÄÏßĞÔ±í
+//é•¿ä¸º20çš„æ•°ç»„åˆ¤å®šå¯¹åº”çš„å„ä¸ªçº¿æ€§è¡¨æ˜¯å¦åˆå§‹åŒ–ï¼ŒTRUEä¸ºå·²åˆå§‹åŒ–ï¼›FALSEä¸ºæœªåˆå§‹åŒ–
+//volç”¨äºå®šä½å½“å‰æ“ä½œçš„çº¿æ€§è¡¨
 int judge[20], vol=1;
 ElemType *newbase;
 FILE *fp;
-char *filename, *pc, appe[5]=".dat", input[60]; //ÓÃÓÚÉú³ÉÎÄ¼şÃû
+char *filename, *pc, appe[5]=".dat", input[60]; //ç”¨äºç”Ÿæˆæ–‡ä»¶å
 
 status IntiaList(SqList *L);
 status DestroyList(SqList *L);
@@ -33,12 +33,12 @@ status ClearList(SqList *L);
 status ListEmpty(SqList *L);
 int ListLength(SqList *L);
 status GetElem(SqList *L,int i,ElemType &e);
-status LocateElem(SqList *L,ElemType e); //¼ò»¯¹ı
+status LocateElem(SqList *L,ElemType e); //ç®€åŒ–è¿‡
 status PriorElem(SqList *L,ElemType cur,ElemType &pre_e);
 status NextElem(SqList *L,ElemType cur,ElemType &next_e);
 status ListInsert(SqList *L,int i,ElemType e);
 status ListDelete(SqList *L,int i,ElemType &e);
-status ListTrabverse(SqList *L);  //¼ò»¯¹ı
+status ListTrabverse(SqList *L);  //ç®€åŒ–è¿‡
 status LoadList(FILE *fp,SqList List[]);
 status SaveList(FILE *fp,SqList List[]);
 status ChooseList(int vol, SqList **L, SqList List[]);
@@ -50,7 +50,7 @@ int main(void){
   L=List;
   while(op){
 	system("cls");	printf("\n\n");
-	printf("ÏµÍ³ÖĞ¹²20¸ö±í£¬µ±Ç°²Ù×÷µÚ%d¸ö±í\n", vol);    //ÌáÊ¾µ±Ç°²Ù×÷µÄ±íµÄÎ»Ğò
+	printf("ç³»ç»Ÿä¸­å…±20ä¸ªè¡¨ï¼Œå½“å‰æ“ä½œç¬¬%dä¸ªè¡¨\n", vol);    //æç¤ºå½“å‰æ“ä½œçš„è¡¨çš„ä½åº
 	printf("      Menu for Linear Table On Sequence Structure \n");
 	printf("-------------------------------------------------\n");
 	printf("    	  1. IntiaList       7. LocateElem\n");
@@ -63,13 +63,13 @@ int main(void){
     printf("    	  15.ChooseList      16. ChartTraverse\n");
     printf("    	  0. Exit\n");
 	printf("-------------------------------------------------\n");
-	printf("    ÇëÑ¡ÔñÄãµÄ²Ù×÷[0~16]:");
+	printf("    è¯·é€‰æ‹©ä½ çš„æ“ä½œ[0~16]:");
 	scanf("%d",&op);
     switch(op){
 	   case 1:
 		 if(IntiaList(L)==OK)
-                printf("ÏßĞÔ±í´´½¨³É¹¦£¡");
-		     else printf("ÏßĞÔ±í´´½¨Ê§°Ü£¡");
+                printf("çº¿æ€§è¡¨åˆ›å»ºæˆåŠŸï¼");
+		     else printf("çº¿æ€§è¡¨åˆ›å»ºå¤±è´¥ï¼");
 		 getchar();getchar();
 		 break;
 	   case 2:
@@ -83,9 +83,9 @@ int main(void){
 	   case 4:
          i = ListEmpty(L);
          if(i==TRUE)
-            printf("ÏßĞÔ±íÎª¿Õ£¡");
+            printf("çº¿æ€§è¡¨ä¸ºç©ºï¼");
          else if(i==FALSE)
-            printf("ÏßĞÔ±í²»Îª¿Õ£¡");
+            printf("çº¿æ€§è¡¨ä¸ä¸ºç©ºï¼");
         getchar();getchar();
 		 break;
 	   case 5:
@@ -93,197 +93,197 @@ int main(void){
             getchar();getchar();
             break;
          }
-		 printf("±í³¤Îª%d", L->length);
+		 printf("è¡¨é•¿ä¸º%d", L->length);
 		 getchar();getchar();
 		 break;
 	   case 6:
-         printf("ÇëÊäÈëÔªËØÎ»Ğòi(1<=i<%d):",L->length+1);
+         printf("è¯·è¾“å…¥å…ƒç´ ä½åºi(1<=i<%d):",L->length+1);
          scanf("%d",&i);
          if(GetElem(L,i,e)==OK)
-            printf("µÚ%d¸öÔªËØÎª%d", i, e);
+            printf("ç¬¬%dä¸ªå…ƒç´ ä¸º%d", i, e);
 		getchar();getchar();
 		 break;
 	   case 7:
-         printf("ÇëÊäÈë´ı²éÊı¾İ:");
+         printf("è¯·è¾“å…¥å¾…æŸ¥æ•°æ®:");
          scanf("%d", &e);
          i=LocateElem(L,e);
          if(i>0)
-            printf("%dÎª±íÖĞµÚ%d¸öÔªËØ", e, i);
+            printf("%dä¸ºè¡¨ä¸­ç¬¬%dä¸ªå…ƒç´ ", e, i);
          if(!i)
-            printf("Î´ÕÒµ½´ËÔªËØ");
+            printf("æœªæ‰¾åˆ°æ­¤å…ƒç´ ");
 		 getchar();getchar();
 		 break;
 	   case 8:
-         printf("ÇëÊäÈë¶¨Î»Êı¾İ:");
+         printf("è¯·è¾“å…¥å®šä½æ•°æ®:");
          scanf("%d", &cur);
          if(PriorElem(L,cur,pre_e)==OK)
-            printf("%dµÄÇ°ÇıÎª%d", cur, pre_e);
+            printf("%dçš„å‰é©±ä¸º%d", cur, pre_e);
 		 getchar();getchar();
 		 break;
 	   case 9:
-         printf("ÇëÊäÈë¶¨Î»Êı¾İ:");
+         printf("è¯·è¾“å…¥å®šä½æ•°æ®:");
 		 scanf("%d", &cur);
          if(NextElem(L,cur,next_e)==OK)
-            printf("%dµÄºó¼ÌÎª%d", cur, next_e);
+            printf("%dçš„åç»§ä¸º%d", cur, next_e);
 		 getchar();getchar();
 		 break;
 	   case 10:
-         printf("ÇëÊäÈë²åÈëÎ»ÖÃi(1<=i<=%d):", L->length+1);
+         printf("è¯·è¾“å…¥æ’å…¥ä½ç½®i(1<=i<=%d):", L->length+1);
          scanf("%d", &i);
-         printf("ÇëÊäÈë²åÈëÊı¾İe:");
+         printf("è¯·è¾“å…¥æ’å…¥æ•°æ®e:");
          scanf("%d", &e);
          if(ListInsert(L,i,e)==ERROR)
-            printf("²åÈëÊ§°Ü");
+            printf("æ’å…¥å¤±è´¥");
          else
-            printf("²åÈë³É¹¦");
+            printf("æ’å…¥æˆåŠŸ");
 		 getchar();getchar();
 		 break;
 	   case 11:
-		 printf("ÇëÊäÈëÉ¾³ıÎ»ÖÃi£¨1<=i<=%d£©", L->length);
+		 printf("è¯·è¾“å…¥åˆ é™¤ä½ç½®iï¼ˆ1<=i<=%dï¼‰", L->length);
          scanf("%d", &i);
          if(ListDelete(L,i,e)==ERROR)
-            printf("É¾³ıÊ§°Ü");
+            printf("åˆ é™¤å¤±è´¥");
          else
-            printf("É¾³ı³É¹¦,É¾³ıµÄÔªËØÎª%d",e);
+            printf("åˆ é™¤æˆåŠŸ,åˆ é™¤çš„å…ƒç´ ä¸º%d",e);
 		 getchar();getchar();
 		 break;
 	   case 12:
-		 if(ListTrabverse(L)==ERROR) printf("±éÀúÊ§°Ü£¡\n");
+		 if(ListTrabverse(L)==ERROR) printf("éå†å¤±è´¥ï¼\n");
 		 getchar();getchar();
 		 break;
        case 13:
          if(LoadList(fp,List)==OK){
-             printf("ÎÄ¼ş¼ÓÔØ³É¹¦");
+             printf("æ–‡ä»¶åŠ è½½æˆåŠŸ");
          }
          getchar();getchar();
          break;
        case 14:
          if(SaveList(fp,List)==OK){
-             printf("ÎÄ¼ş±£´æ³É¹¦");
+             printf("æ–‡ä»¶ä¿å­˜æˆåŠŸ");
          }
          getchar();getchar();
 		 break;
        case 15:
-         printf("ÇëÊäÈëÒª²Ù×÷±íµÄÎ»Ğòvol:(1<=vol<=20)");
+         printf("è¯·è¾“å…¥è¦æ“ä½œè¡¨çš„ä½åºvol:(1<=vol<=20)");
          scanf("%d", &vol);
          ChooseList(vol, &L, List);
          getchar();
          break;
        case 16:
-         if(ChartTraverse(List)==ERROR) printf("±íµ¥±éÀúÊ§°Ü£¡");
+         if(ChartTraverse(List)==ERROR) printf("è¡¨å•éå†å¤±è´¥ï¼");
 		 getchar();getchar();
 	   case 0:
          break;
 	}//end of switch
   }//end of while
-  printf("»¶Ó­ÏÂ´ÎÔÙÊ¹ÓÃ±¾ÏµÍ³£¡");
+  printf("æ¬¢è¿ä¸‹æ¬¡å†ä½¿ç”¨æœ¬ç³»ç»Ÿï¼");
   return 0;
 }//end of main()
 
 /**
- * º¯ÊıÃû³Æ£ºInitiaList
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL»òList[]µÄµØÖ·
- * º¯Êı¹¦ÄÜ£º¹¹ÔìÒ»¸ö¿ÕµÄÏßĞÔ±í
- * ·µ»ØÖµ£º³É¹¦¹¹Ôì·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šInitiaList
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆLæˆ–List[]çš„åœ°å€
+ * å‡½æ•°åŠŸèƒ½ï¼šæ„é€ ä¸€ä¸ªç©ºçš„çº¿æ€§è¡¨
+ * è¿”å›å€¼ï¼šæˆåŠŸæ„é€ è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 status IntiaList(SqList *L){
 	L->elem = (ElemType *)malloc( LIST_INIT_SIZE * sizeof (ElemType));
     if(!L->elem) return ERROR;
 	L->length=0;
-    L->listsize=LIST_INIT_SIZE;     //³õÊ¼·ÖÅä¿Õ¼ä
-    judge[vol-1] = TRUE;            //µ±Ç°±íÒÑ³õÊ¼»¯£¬ĞŞ¸Ä¶ÔÓ¦ÅĞ¶¨±äÁ¿
+    L->listsize=LIST_INIT_SIZE;     //åˆå§‹åˆ†é…ç©ºé—´
+    judge[vol-1] = TRUE;            //å½“å‰è¡¨å·²åˆå§‹åŒ–ï¼Œä¿®æ”¹å¯¹åº”åˆ¤å®šå˜é‡
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºDestroyList
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÉ¾³ıÏßĞÔ±í
- * ·µ»ØÖµ£º³É¹¦Ïú»Ù·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šDestroyList
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šåˆ é™¤çº¿æ€§è¡¨
+ * è¿”å›å€¼ï¼šæˆåŠŸé”€æ¯è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 status DestroyList(SqList *L){
-//¶ÔÓÚÎ´²Ù×÷¹ıµÄÅĞ¶¨Êı×é¸÷ÔªËØ£¬ÆäÖµÎªÒ»Ëæ»úÊı£¬²»Ò»¶¨ÎªFALSE£¬¹ÊÌõ¼şÓ¦Îª·ÇTRUE£¬ºó²»ÔÙËµÃ÷
+//å¯¹äºæœªæ“ä½œè¿‡çš„åˆ¤å®šæ•°ç»„å„å…ƒç´ ï¼Œå…¶å€¼ä¸ºä¸€éšæœºæ•°ï¼Œä¸ä¸€å®šä¸ºFALSEï¼Œæ•…æ¡ä»¶åº”ä¸ºéTRUEï¼Œåä¸å†è¯´æ˜
     if(judge[vol-1] !=TRUE){
-        printf("\n´Ë±íÎ´³õÊ¼»¯£¡");
+        printf("\næ­¤è¡¨æœªåˆå§‹åŒ–ï¼");
         getchar();
         return ERROR;
     }
     free(L->elem);
     L->length=L->listsize=0;
-    //Ïú»Ù±íL¼°¸½ÊôÈ«²¿ĞÅÏ¢
+    //é”€æ¯è¡¨LåŠé™„å±å…¨éƒ¨ä¿¡æ¯
     L=NULL;
-    judge[vol-1] = FALSE;  //ĞŞ¸Ä¶ÔÓ¦ÅĞ¶¨±äÁ¿
-    printf("ÏßĞÔ±í%dÒÑÉ¾³ı£¡", vol);
+    judge[vol-1] = FALSE;  //ä¿®æ”¹å¯¹åº”åˆ¤å®šå˜é‡
+    printf("çº¿æ€§è¡¨%då·²åˆ é™¤ï¼", vol);
     getchar();
     return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºClearList
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÖØÖÃÏßĞÔ±í
- * ·µ»ØÖµ£º³É¹¦ÖÃ¿Õ·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šClearList
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šé‡ç½®çº¿æ€§è¡¨
+ * è¿”å›å€¼ï¼šæˆåŠŸç½®ç©ºè¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 status ClearList(SqList *L){
     if(judge[vol-1]  !=TRUE){
-        printf("´Ë±íÎ´³õÊ¼»¯£¡");
+        printf("æ­¤è¡¨æœªåˆå§‹åŒ–ï¼");
         getchar();
         return ERROR;
     }
-    L->length=0;                 //³õÊ¼±í³¤
-    L->listsize=LIST_INIT_SIZE;  //³õÊ¼×´Ì¬¿Õ¼ä´óĞ¡
-    printf("±íÒÑÇå¿Õ£¡");
+    L->length=0;                 //åˆå§‹è¡¨é•¿
+    L->listsize=LIST_INIT_SIZE;  //åˆå§‹çŠ¶æ€ç©ºé—´å¤§å°
+    printf("è¡¨å·²æ¸…ç©ºï¼");
     getchar();
     return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºListEmpty
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÅĞ¶ÏÏßĞÔ±íÊÇ·ñÎª¿Õ
- * ·µ»ØÖµ£ºÈôLÎª¿Õ±íÔò·µ»ØTRUE£¬·ñÔò·µ»ØFALSE
+ * å‡½æ•°åç§°ï¼šListEmpty
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šåˆ¤æ–­çº¿æ€§è¡¨æ˜¯å¦ä¸ºç©º
+ * è¿”å›å€¼ï¼šè‹¥Lä¸ºç©ºè¡¨åˆ™è¿”å›TRUEï¼Œå¦åˆ™è¿”å›FALSE
  **/
 status ListEmpty(SqList *L){
     if(judge[vol-1]  !=TRUE){
-        printf("´Ë±íÎ´³õÊ¼»¯£¡");
+        printf("æ­¤è¡¨æœªåˆå§‹åŒ–ï¼");
         getchar();
         return ERROR;
     }
     int flag=TRUE;
     if(L->length!=0)
-        flag = FALSE;   //±í³¤²»Îª0
+        flag = FALSE;   //è¡¨é•¿ä¸ä¸º0
     return flag;
 }
 /**
- * º¯ÊıÃû³Æ£ºListLength
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL
- * º¯Êı¹¦ÄÜ£º¼ÆËãÏßĞÔ±íLÖĞÊı¾İÔªËØ¸öÊı£»
- * ·µ»ØÖµ£º³É¹¦·µ»ØLÖĞÊı¾İÔªËØ¸öÊı£¬Ê§°Ü·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šListLength
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šè®¡ç®—çº¿æ€§è¡¨Lä¸­æ•°æ®å…ƒç´ ä¸ªæ•°ï¼›
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›Lä¸­æ•°æ®å…ƒç´ ä¸ªæ•°ï¼Œå¤±è´¥è¿”å›ERROR
  **/
 int ListLength(SqList *L){
     if(judge[vol-1] !=TRUE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯");
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–");
         getchar();
         return ERROR;
     }
     return L->length;
 }
 /**
- * º¯ÊıÃû³Æ£ºGetElem
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL£¬eÎªµÚi¸öÊı¾İµÄµØÖ·£»
- * º¯Êı¹¦ÄÜ£º²éÕÒ²¢ÏÔÊ¾LÖĞµÚi¸öÔªËØµÄÖµ£»
- * ·µ»ØÖµ£º³É¹¦Ôò·µ»ØµÚi¸öÔªËØµÄÖµ£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šGetElem
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆLï¼Œeä¸ºç¬¬iä¸ªæ•°æ®çš„åœ°å€ï¼›
+ * å‡½æ•°åŠŸèƒ½ï¼šæŸ¥æ‰¾å¹¶æ˜¾ç¤ºLä¸­ç¬¬iä¸ªå…ƒç´ çš„å€¼ï¼›
+ * è¿”å›å€¼ï¼šæˆåŠŸåˆ™è¿”å›ç¬¬iä¸ªå…ƒç´ çš„å€¼ï¼Œå¦åˆ™è¿”å›ERROR
  **/
 status GetElem(SqList *L,int i,ElemType &e){
     if(judge[vol-1] !=TRUE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯");
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–");
         getchar();
         return ERROR;
     }
     if(ListEmpty(L)==TRUE){
-        printf("\n±íÖĞÎŞÔªËØ£¡");
+        printf("\nè¡¨ä¸­æ— å…ƒç´ ï¼");
         getchar();
         return ERROR;
     }
     if(i<1 || i>L->length+1){
-        printf("ÏÂ±êÔ½½ç£¡");
+        printf("ä¸‹æ ‡è¶Šç•Œï¼");
         getchar();
         return ERROR;
     }
@@ -291,52 +291,52 @@ status GetElem(SqList *L,int i,ElemType &e){
     return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºLocateElem
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL£¬Ïà¶Ô±ÈµÄÔªËØÖµ£»
- * º¯Êı¹¦ÄÜ£º²éÕÒLÖĞÓëeÏàÍ¬Êı¾İËùÔÚµÄÎ»Ğò£»Î»Ğò´Ó1¿ªÊ¼
- * ·µ»ØÖµ£º³É¹¦Ôò·µ»ØµÚÒ»¸öÓëeÏàÍ¬µÄÊı¾İµÄÎ»Ğò£¬²»´æÔÚÔò·µ»Ø0£¬ÆäÓàÇé¿ö·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šLocateElem
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆLï¼Œç›¸å¯¹æ¯”çš„å…ƒç´ å€¼ï¼›
+ * å‡½æ•°åŠŸèƒ½ï¼šæŸ¥æ‰¾Lä¸­ä¸eç›¸åŒæ•°æ®æ‰€åœ¨çš„ä½åºï¼›ä½åºä»1å¼€å§‹
+ * è¿”å›å€¼ï¼šæˆåŠŸåˆ™è¿”å›ç¬¬ä¸€ä¸ªä¸eç›¸åŒçš„æ•°æ®çš„ä½åºï¼Œä¸å­˜åœ¨åˆ™è¿”å›0ï¼Œå…¶ä½™æƒ…å†µè¿”å›ERROR
  **/
 status LocateElem(SqList *L,ElemType e){
     int i;
     if(judge[vol-1] !=TRUE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯");
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–");
         getchar();
         return ERROR;
     }
     if(ListEmpty(L)==TRUE){
-        printf("±íÖĞÎŞÔªËØ£¡");
+        printf("è¡¨ä¸­æ— å…ƒç´ ï¼");
         getchar();
         return ERROR;
     }
 
     for(i=0;i<L->length;i++){
         if(L->elem[i] == e)
-            return (i+1);   //ÏÂ±ê+1¼´ÎªÎ»Ğò
+            return (i+1);   //ä¸‹æ ‡+1å³ä¸ºä½åº
     }
-    return 0;  //Î´ÕÒµ½ÔªËØ
+    return 0;  //æœªæ‰¾åˆ°å…ƒç´ 
 }
 /**
- * º¯ÊıÃû³Æ£ºPriorElem
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL£¬²éÕÒµÄÊı¾İcur_e,Ç°Çıpre_e£»
- * º¯Êı¹¦ÄÜ£º²éÕÒLÖĞÓëcur_eÏàÍ¬µÄµÚÒ»¸öÊı¾İ£¬²¢·µ»ØÆäÇ°Çı
- * ·µ»ØÖµ£º³É¹¦Ôò·µ»ØÓëcurÏàÍ¬µÄµÚÒ»¸öÊı¾İ£¬²¢·µ»ØÆäµÚÒ»¸öÇ°Çı£»ÈôÎŞÇ°ÇıÒÔ¼°ÆäËûÇé¿öÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šPriorElem
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆLï¼ŒæŸ¥æ‰¾çš„æ•°æ®cur_e,å‰é©±pre_eï¼›
+ * å‡½æ•°åŠŸèƒ½ï¼šæŸ¥æ‰¾Lä¸­ä¸cur_eç›¸åŒçš„ç¬¬ä¸€ä¸ªæ•°æ®ï¼Œå¹¶è¿”å›å…¶å‰é©±
+ * è¿”å›å€¼ï¼šæˆåŠŸåˆ™è¿”å›ä¸curç›¸åŒçš„ç¬¬ä¸€ä¸ªæ•°æ®ï¼Œå¹¶è¿”å›å…¶ç¬¬ä¸€ä¸ªå‰é©±ï¼›è‹¥æ— å‰é©±ä»¥åŠå…¶ä»–æƒ…å†µåˆ™è¿”å›ERROR
  **/
 status PriorElem(SqList *L,ElemType cur,ElemType &pre_e){
     int i;
     if(judge[vol-1] !=TRUE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯");
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–");
         getchar();
         return ERROR;
     }
     if(ListEmpty(L)==TRUE){
-        printf("±íÖĞÎŞÔªËØ£¡");
+        printf("è¡¨ä¸­æ— å…ƒç´ ï¼");
         getchar();
         return ERROR;
     }
     for(i=0;i<L->length;i++){
-        if(L->elem[i] == cur){   //´ó²¿·ÖÑ­»·Ö»×öµ½ÕâÒ»²½
-            if(i==0){            //±íÖĞÊ×ÔªÎŞÇ°Çı
-                printf("´ËÔªËØÎŞÇ°Çı£¡");
+        if(L->elem[i] == cur){   //å¤§éƒ¨åˆ†å¾ªç¯åªåšåˆ°è¿™ä¸€æ­¥
+            if(i==0){            //è¡¨ä¸­é¦–å…ƒæ— å‰é©±
+                printf("æ­¤å…ƒç´ æ— å‰é©±ï¼");
                 getchar();
                 return ERROR;
             }
@@ -346,65 +346,65 @@ status PriorElem(SqList *L,ElemType cur,ElemType &pre_e){
             }
         }
     }
-    printf("Î´ÕÒµ½´ËÔªËØ£¡");
+    printf("æœªæ‰¾åˆ°æ­¤å…ƒç´ ï¼");
     getchar();
     return ERROR;
 }
 /**
- * º¯ÊıÃû³Æ£ºNextElem
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL£¬²éÕÒµÄÊı¾İcur,ºóÇınext_e£»
- * º¯Êı¹¦ÄÜ£º²éÕÒLÖĞÓëcurÏàÍ¬µÄµÚÒ»¸öÊı¾İ£¬²¢·µ»ØÆäºó¼Ì
- * ·µ»ØÖµ£º³É¹¦Ôò·µ»ØÓëcurÏàÍ¬µÄµÚÒ»¸öÊı¾İ£¬²¢·µ»ØÆäºó¼Ì£»ÈôÎŞºóÇıÒÔ¼°ÆäËûÇé¿öÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šNextElem
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆLï¼ŒæŸ¥æ‰¾çš„æ•°æ®cur,åé©±next_eï¼›
+ * å‡½æ•°åŠŸèƒ½ï¼šæŸ¥æ‰¾Lä¸­ä¸curç›¸åŒçš„ç¬¬ä¸€ä¸ªæ•°æ®ï¼Œå¹¶è¿”å›å…¶åç»§
+ * è¿”å›å€¼ï¼šæˆåŠŸåˆ™è¿”å›ä¸curç›¸åŒçš„ç¬¬ä¸€ä¸ªæ•°æ®ï¼Œå¹¶è¿”å›å…¶åç»§ï¼›è‹¥æ— åé©±ä»¥åŠå…¶ä»–æƒ…å†µåˆ™è¿”å›ERROR
  **/
 status NextElem(SqList *L,ElemType cur,ElemType &next_e){
     int i;
     if(judge[vol-1] !=TRUE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯£¡");
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–ï¼");
         getchar();
         return ERROR;
     }
     if(ListEmpty(L)==TRUE){
-        printf("±íÖĞÎŞÔªËØ£¡");
+        printf("è¡¨ä¸­æ— å…ƒç´ ï¼");
         getchar();
         return ERROR;
     }
     for(i=0;i<L->length;i++){
-        if(L->elem[i] == cur){   //´ó²¿·ÖÑ­»·Ö»×öµ½ÕâÒ»²½
+        if(L->elem[i] == cur){   //å¤§éƒ¨åˆ†å¾ªç¯åªåšåˆ°è¿™ä¸€æ­¥
             if(i!=L->length-1){
                 next_e = L->elem[i+1];
                 return OK;
             }
-            else{               //±íÖĞÎ²ÔªÎŞºó¼Ì
-                printf("´ËÔªËØÎŞºó¼Ì£¡");
+            else{               //è¡¨ä¸­å°¾å…ƒæ— åç»§
+                printf("æ­¤å…ƒç´ æ— åç»§ï¼");
                 getchar();
                 return ERROR;
             }
         }
     }
-    printf("Î´ÕÒµ½´ËÔªËØ£¡");
+    printf("æœªæ‰¾åˆ°æ­¤å…ƒç´ ï¼");
     return ERROR;
 }
 /**
- * º¯ÊıÃû³Æ£ºListInsert
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL£¬²åÈëµÄÎ»ÖÃi£¬²åÈëµÄÊı¾İÔªËØe¡£
- * º¯Êı¹¦ÄÜ£ºÔÚLµÄµÚi¸öÎ»ÖÃÖ®Ç°²åÈëĞÂµÄÊı¾İÔªËØe£»ÈôÒÑ²åÂú£¬Ôò°´ÕÕ·ÖÅäÔöÁ¿£¬·ÖÅä¸ü´óµÄ¿Õ¼ä¡£
- * ·µ»ØÖµ£º³É¹¦²åÈë·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šListInsert
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆLï¼Œæ’å…¥çš„ä½ç½®iï¼Œæ’å…¥çš„æ•°æ®å…ƒç´ eã€‚
+ * å‡½æ•°åŠŸèƒ½ï¼šåœ¨Lçš„ç¬¬iä¸ªä½ç½®ä¹‹å‰æ’å…¥æ–°çš„æ•°æ®å…ƒç´ eï¼›è‹¥å·²æ’æ»¡ï¼Œåˆ™æŒ‰ç…§åˆ†é…å¢é‡ï¼Œåˆ†é…æ›´å¤§çš„ç©ºé—´ã€‚
+ * è¿”å›å€¼ï¼šæˆåŠŸæ’å…¥è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 status ListInsert(SqList *L,int i,ElemType e){
     ElemType *p, *q;
     if(judge[vol-1] !=TRUE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯£¬");
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–ï¼Œ");
         getchar();   return ERROR;
     }
     if(i<1 || i >L->length+1) {
-        printf("ÏÂ±êÔ½½ç£¬");
+        printf("ä¸‹æ ‡è¶Šç•Œï¼Œ");
         getchar();   return ERROR;
     }
-    //ÔªËØ¸öÊıÒç³öÊ±¶îÍâ·ÖÅä¿Õ¼ä
+    //å…ƒç´ ä¸ªæ•°æº¢å‡ºæ—¶é¢å¤–åˆ†é…ç©ºé—´
     if(L->length >= L->listsize){
         newbase = (ElemType *)realloc(L->elem, (L->listsize+LISTINCREMENT)* sizeof(ElemType));
         if(!newbase){
-            printf("ÄÚ´æ·ÖÅäÊ§°Ü£¬");
+            printf("å†…å­˜åˆ†é…å¤±è´¥ï¼Œ");
             getchar();   return ERROR;
         }
         L->elem = newbase;
@@ -412,56 +412,56 @@ status ListInsert(SqList *L,int i,ElemType e){
     }
     q = &(L->elem[i-1]);
     for(p=&(L->elem[L->length-1]); p>=q; p--){
-        *(p+1) = *p;    //´Ó±íÎ²ÖÁ²åÈë´¦ÔªËØÒÀ´ÎÇ°½ø£¬Îª´ı²åÈëÔªËØÁô³ö¿Õ¼ä
+        *(p+1) = *p;    //ä»è¡¨å°¾è‡³æ’å…¥å¤„å…ƒç´ ä¾æ¬¡å‰è¿›ï¼Œä¸ºå¾…æ’å…¥å…ƒç´ ç•™å‡ºç©ºé—´
     }
-    *q = e;         //²åÈëÔªËØ
+    *q = e;         //æ’å…¥å…ƒç´ 
     L->length++;
     return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºListDelete
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL£¬É¾³ıµÄÎ»Ğòi£¬Ö¸ÕëeµÄµØÖ·¡£
- * º¯Êı¹¦ÄÜ£ºÉ¾³ıLµÄµÚi¸öÊı¾İÔªËØ£¬ÓÃe·µ»ØÆäÖµ¡£
- * ·µ»ØÖµ£º³É¹¦É¾³ı·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šListDelete
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆLï¼Œåˆ é™¤çš„ä½åºiï¼ŒæŒ‡é’ˆeçš„åœ°å€ã€‚
+ * å‡½æ•°åŠŸèƒ½ï¼šåˆ é™¤Lçš„ç¬¬iä¸ªæ•°æ®å…ƒç´ ï¼Œç”¨eè¿”å›å…¶å€¼ã€‚
+ * è¿”å›å€¼ï¼šæˆåŠŸåˆ é™¤è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 status ListDelete(SqList *L,int i,ElemType &e){
     ElemType *p, *q;
     if(judge[vol-1] !=TRUE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯£¬");
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–ï¼Œ");
         getchar();
         return ERROR;
     }
     if(ListEmpty(L)==TRUE){
-        printf("±íÖĞÎŞÔªËØ£¬");
+        printf("è¡¨ä¸­æ— å…ƒç´ ï¼Œ");
         getchar();
         return ERROR;
     }
     if(i<1 || i >L->length) {
-        printf("ÏÂ±êÔ½½ç£¬");   return ERROR;
+        printf("ä¸‹æ ‡è¶Šç•Œï¼Œ");   return ERROR;
     }
     q = &(L->elem[i-1]);
     e = L->elem[i-1];
     for(p=q;p<=&(L->elem[L->length-1]); p++){
-        *(p) = *(p+1);  //´Ó²åÈë´¦ÖÁ±íÎ²ÔªËØÒÀ´ÎºóÍË
+        *(p) = *(p+1);  //ä»æ’å…¥å¤„è‡³è¡¨å°¾å…ƒç´ ä¾æ¬¡åé€€
     }
     L->length--;
     return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºListTrabverse
- * º¯Êı²ÎÊı£ºÏßĞÔ±íÖ¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÒÀ´ÎÏÔÊ¾ÏßĞÔ±íÖĞµÄÃ¿¸öÔªËØ¡£
- * ·µ»ØÖµ£º³É¹¦±éÀú·µ»ØÏßĞÔ±íµÄ³¤¶È£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šListTrabverse
+ * å‡½æ•°å‚æ•°ï¼šçº¿æ€§è¡¨æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šä¾æ¬¡æ˜¾ç¤ºçº¿æ€§è¡¨ä¸­çš„æ¯ä¸ªå…ƒç´ ã€‚
+ * è¿”å›å€¼ï¼šæˆåŠŸéå†è¿”å›çº¿æ€§è¡¨çš„é•¿åº¦ï¼Œå¦åˆ™è¿”å›ERROR
  **/
 status ListTrabverse(SqList *L){
     int i;
     if(judge[vol-1] !=TRUE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯£¬");
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–ï¼Œ");
         getchar();
         return ERROR;
     }
     if(ListEmpty(L)==TRUE){
-        printf("±íÖĞÎŞÔªËØ£¬");
+        printf("è¡¨ä¸­æ— å…ƒç´ ï¼Œ");
         getchar();
         return ERROR;
     }
@@ -471,62 +471,62 @@ status ListTrabverse(SqList *L){
    return L->length;
 }
 /**
- * º¯ÊıÃû³Æ£ºLoadList
- * º¯Êı²ÎÊı£ºÎÄ¼şÖ¸Õë£¬ÏßĞÔ±íµ¥List[20]
- * º¯Êı¹¦ÄÜ£ºÊı¾İ¼ÓÔØ£¬ÎªÏßĞÔ±íÊäÈëÔªËØ¡£
- * ·µ»ØÖµ£º¼ÓÔØ³É¹¦·µ»ØOK£¬¼ÓÔØÊ§°Ü·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šLoadList
+ * å‡½æ•°å‚æ•°ï¼šæ–‡ä»¶æŒ‡é’ˆï¼Œçº¿æ€§è¡¨å•List[20]
+ * å‡½æ•°åŠŸèƒ½ï¼šæ•°æ®åŠ è½½ï¼Œä¸ºçº¿æ€§è¡¨è¾“å…¥å…ƒç´ ã€‚
+ * è¿”å›å€¼ï¼šåŠ è½½æˆåŠŸè¿”å›OKï¼ŒåŠ è½½å¤±è´¥è¿”å›ERROR
  **/
  status LoadList(FILE *fp,SqList List[20]){
      int i,j, yl;
-     printf("ÇëÊäÈëÄúÒª»Ö¸´µÄÊı¾İËùÔÚµÄÎÄ¼şÃû:");
+     printf("è¯·è¾“å…¥æ‚¨è¦æ¢å¤çš„æ•°æ®æ‰€åœ¨çš„æ–‡ä»¶å:");
      scanf("%s",input);
      filename=input;
      if ((fp=fopen(filename,"r"))==NULL)
      {
-         printf("´ò¿ªÎÄ¼şÊ§°Ü");
+         printf("æ‰“å¼€æ–‡ä»¶å¤±è´¥");
          return ERROR;
      }
-     fread(&yl,sizeof(int),1,fp);      //¶ÁÈ¡ÓĞĞ§±í¸öÊı
+     fread(&yl,sizeof(int),1,fp);      //è¯»å–æœ‰æ•ˆè¡¨ä¸ªæ•°
      for(i=0;i<yl;i++){
-        IntiaList(&List[i]);           //Ö»³õÊ¼»¯yl¸ö±í£¬
-        fread(&(List[i].length),sizeof(int),1,fp);  //¶ÁÈëÃ¿¸ö±íµÄ±í³¤
-        judge[i]=TRUE;                  //ÒÑ³õÊ¼»¯µÄ±íÅĞ¶¨±äÁ¿ĞŞ¸ÄÎªTRUE
+        IntiaList(&List[i]);           //åªåˆå§‹åŒ–ylä¸ªè¡¨ï¼Œ
+        fread(&(List[i].length),sizeof(int),1,fp);  //è¯»å…¥æ¯ä¸ªè¡¨çš„è¡¨é•¿
+        judge[i]=TRUE;                  //å·²åˆå§‹åŒ–çš„è¡¨åˆ¤å®šå˜é‡ä¿®æ”¹ä¸ºTRUE
      }
      for(i=yl;i<20;i++){
-        judge[i]=FALSE;         //Î´³õÊ¼»¯µÄ±íÅĞ¶¨±äÁ¿Í³Ò»ÎªFALSE
+        judge[i]=FALSE;         //æœªåˆå§‹åŒ–çš„è¡¨åˆ¤å®šå˜é‡ç»Ÿä¸€ä¸ºFALSE
      }
      for(i=0;i<yl;i++){
         for(j=0;j<List[i].length;j++){
             fread(&(List[i].elem[j]),sizeof(ElemType),1,fp);
-            //ÔªËØ¸öÊıÒç³öÊ±¶îÍâ·ÖÅä¿Õ¼ä
+            //å…ƒç´ ä¸ªæ•°æº¢å‡ºæ—¶é¢å¤–åˆ†é…ç©ºé—´
             if(List[i].length >= List[i].listsize){
                 newbase = (ElemType *)realloc(List[i].elem, (List[i].listsize+LISTINCREMENT)* sizeof(ElemType));
                 if(!newbase){
-                    printf("ÄÚ´æ·ÖÅäÊ§°Ü");   return ERROR;
+                    printf("å†…å­˜åˆ†é…å¤±è´¥");   return ERROR;
                 }
                 List[i].elem = newbase;
                 List[i].listsize += LISTINCREMENT;
             }
         }
      }
-     //ÕâÀï´ÓÎÄ¼şÖĞÖğ¸ö¶ÁÈ¡Êı¾İÔªËØ»Ö¸´Ë³Ğò±í£¬¶ÔÓÚ²»Í¬µÄÎïÀí½á¹¹£¬¿ÉÍ¨¹ı¶ÁÈ¡µÄÊı¾İÔªËØ»Ö¸´ÄÚ´æÖĞµÄÎïÀí½á¹¹¡£
+     //è¿™é‡Œä»æ–‡ä»¶ä¸­é€ä¸ªè¯»å–æ•°æ®å…ƒç´ æ¢å¤é¡ºåºè¡¨ï¼Œå¯¹äºä¸åŒçš„ç‰©ç†ç»“æ„ï¼Œå¯é€šè¿‡è¯»å–çš„æ•°æ®å…ƒç´ æ¢å¤å†…å­˜ä¸­çš„ç‰©ç†ç»“æ„ã€‚
      fclose(fp);
 	 return OK;
  }
  /**
- * º¯ÊıÃû³Æ£ºSaveList
- * º¯Êı²ÎÊı£ºÎÄ¼şÖ¸Õë£¬ÏßĞÔ±íµ¥List[20]
- * º¯Êı¹¦ÄÜ£º½«LÖĞµÄÊı¾İ±£´æµ½fpÖ¸ÕëÖ¸ÏòµÄÎÄ¼şÖĞ
- * ·µ»ØÖµ£ºOK
+ * å‡½æ•°åç§°ï¼šSaveList
+ * å‡½æ•°å‚æ•°ï¼šæ–‡ä»¶æŒ‡é’ˆï¼Œçº¿æ€§è¡¨å•List[20]
+ * å‡½æ•°åŠŸèƒ½ï¼šå°†Lä¸­çš„æ•°æ®ä¿å­˜åˆ°fpæŒ‡é’ˆæŒ‡å‘çš„æ–‡ä»¶ä¸­
+ * è¿”å›å€¼ï¼šOK
  **/
  status SaveList(FILE *fp,SqList List[20]){
     int i,j,yl=0;
-    for(i=0;i<20;i++){      //Í³¼ÆÓĞÔªËØµÄ±íµÄ¸öÊı
+    for(i=0;i<20;i++){      //ç»Ÿè®¡æœ‰å…ƒç´ çš„è¡¨çš„ä¸ªæ•°
         if(judge[i]==TRUE && List[i].length!=0)
             yl++;
     }
-    if(yl ==0){       //ÎŞÓĞĞ§Êı¾İÊ±±¨´í·µ»Ø
-         printf("Ã»ÓĞ´ı´æÊı¾İ");
+    if(yl ==0){       //æ— æœ‰æ•ˆæ•°æ®æ—¶æŠ¥é”™è¿”å›
+         printf("æ²¡æœ‰å¾…å­˜æ•°æ®");
          getchar();
          return ERROR;
     }
@@ -534,73 +534,73 @@ status ListTrabverse(SqList *L){
     lt=time(NULL);
     filename=ctime(&lt);
     filename[strlen(filename)-1]='\0';
-    strcat(filename,appe);      //ÒÔÉÏÉú³ÉÊ±¼äÃüÃûµÄÎÄ¼şÃû×Ö·û´®
+    strcat(filename,appe);      //ä»¥ä¸Šç”Ÿæˆæ—¶é—´å‘½åçš„æ–‡ä»¶åå­—ç¬¦ä¸²
     pc=&filename[0];
-    while(*pc){       //ÎÄ¼şÃû×Ö·û´®¹æ·¶»¯£¬½«¡®:¡¯Óë' ' ÓÃ¡®_¡¯´úÌæ
+    while(*pc){       //æ–‡ä»¶åå­—ç¬¦ä¸²è§„èŒƒåŒ–ï¼Œå°†â€˜:â€™ä¸' ' ç”¨â€˜_â€™ä»£æ›¿
         if((*pc==':' ) ||   (*pc==' ')){   *pc='_';    }
         pc++;
     }
     if ((fp=fopen(filename,"w"))==NULL)
     {
-        printf("ÎÄ¼ş´ò¿ªÊ§°Ü");
+        printf("æ–‡ä»¶æ‰“å¼€å¤±è´¥");
         getchar();getchar();
         return ERROR;
     }
-    fwrite(&yl,sizeof(int),1,fp);   //Ğ´ÈëÓĞĞ§±íµÄ¸öÊı
-    for(i=0;i<20;i++){      //Ğ´ÈëÃ¿¸öÓĞĞ§±íµÄ±í³¤
+    fwrite(&yl,sizeof(int),1,fp);   //å†™å…¥æœ‰æ•ˆè¡¨çš„ä¸ªæ•°
+    for(i=0;i<20;i++){      //å†™å…¥æ¯ä¸ªæœ‰æ•ˆè¡¨çš„è¡¨é•¿
         if(judge[i]==TRUE && List[i].length!=0)
             fwrite(&(List[i].length),sizeof(int),1,fp);
     }
-    for(i=0;i<20;i++){      //Ñ­»·Ğ´ÈëÃ¿¸öÓĞĞ§±íµÄÔªËØ
+    for(i=0;i<20;i++){      //å¾ªç¯å†™å…¥æ¯ä¸ªæœ‰æ•ˆè¡¨çš„å…ƒç´ 
         if(judge[i]==TRUE && List[i].length!=0)
             for(j=0;j<List[i].length;j++)
                 fwrite(&(List[i].elem[j]),sizeof(ElemType),1,fp);
     }
 
-    //Í¨¹ı±éÀúÖğ¸ö·ÃÎÊÊı¾İÔªËØ²¢Ğ´Èëµ½ÎÄ¼şÖĞ
+    //é€šè¿‡éå†é€ä¸ªè®¿é—®æ•°æ®å…ƒç´ å¹¶å†™å…¥åˆ°æ–‡ä»¶ä¸­
     fclose(fp);
     return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºChooseList
- * º¯Êı²ÎÊı£ºÒªÌæ»»µÄ±íÎ»ÖÃvol£¬ÎÄ¼şÖ¸Õë£¬ÏßĞÔ±íµ¥List[20]
- * º¯Êı¹¦ÄÜ£º½«LÖ¸ÏòÒª²Ù×÷µÄ±íÏÂ±êvol-1
- * ·µ»ØÖµ£ºÊ§°Ü·µ»ØERROR£¬³É¹¦·µ»ØOK
+ * å‡½æ•°åç§°ï¼šChooseList
+ * å‡½æ•°å‚æ•°ï¼šè¦æ›¿æ¢çš„è¡¨ä½ç½®volï¼Œæ–‡ä»¶æŒ‡é’ˆï¼Œçº¿æ€§è¡¨å•List[20]
+ * å‡½æ•°åŠŸèƒ½ï¼šå°†LæŒ‡å‘è¦æ“ä½œçš„è¡¨ä¸‹æ ‡vol-1
+ * è¿”å›å€¼ï¼šå¤±è´¥è¿”å›ERRORï¼ŒæˆåŠŸè¿”å›OK
  **/
 status ChooseList(int vol, SqList **L, SqList List[20]){
     if(vol<1 || vol>20){
-        printf("ÏÂ±êÔ½½ç£¬²Ù×÷Ê§°Ü£¡");
+        printf("ä¸‹æ ‡è¶Šç•Œï¼Œæ“ä½œå¤±è´¥ï¼");
         getchar();
         return ERROR;
     }
     *L=&(List[vol-1]);
     if(judge[vol-1]==FALSE){
-        printf("´Ë±íÉĞÎ´³õÊ¼»¯");    //·ÀÖ¹Îó²Ù×÷
+        printf("æ­¤è¡¨å°šæœªåˆå§‹åŒ–");    //é˜²æ­¢è¯¯æ“ä½œ
         getchar();  getchar();
     }
     return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºChartTraverse
- * º¯Êı²ÎÊı£ºÒªÌæ»»µÄ±íÎ»ÖÃvol£¬ÎÄ¼şÖ¸Õë£¬ÏßĞÔ±íµ¥List[20]
- * º¯Êı¹¦ÄÜ£º½«LÖ¸ÏòÒª²Ù×÷µÄ±íÏÂ±êvol-1
- * ·µ»ØÖµ£ºÊ§°Ü·µ»ØERROR£¬³É¹¦·µ»ØOK
+ * å‡½æ•°åç§°ï¼šChartTraverse
+ * å‡½æ•°å‚æ•°ï¼šè¦æ›¿æ¢çš„è¡¨ä½ç½®volï¼Œæ–‡ä»¶æŒ‡é’ˆï¼Œçº¿æ€§è¡¨å•List[20]
+ * å‡½æ•°åŠŸèƒ½ï¼šå°†LæŒ‡å‘è¦æ“ä½œçš„è¡¨ä¸‹æ ‡vol-1
+ * è¿”å›å€¼ï¼šå¤±è´¥è¿”å›ERRORï¼ŒæˆåŠŸè¿”å›OK
  **/
 status ChartTraverse(SqList List[20]){
     int i,j,flag=ERROR;
     printf("\n-----------all elements -----------------------\n");
     for(i=0; i<20; i++){
-        if(judge[i] !=TRUE){    //Î´³õÊ¼»¯
-            printf("List[%d]Î´³õÊ¼»¯\n", i);
+        if(judge[i] !=TRUE){    //æœªåˆå§‹åŒ–
+            printf("List[%d]æœªåˆå§‹åŒ–\n", i);
             continue;
         }
-        if(List[i].length==0){  //¿Õ±í
-            printf("List[%d]ÖĞÎŞÔªËØ\n", i);
+        if(List[i].length==0){  //ç©ºè¡¨
+            printf("List[%d]ä¸­æ— å…ƒç´ \n", i);
             continue;
         }
         for(j=0;j<List[i].length;j++) printf("%d ",List[i].elem[j]);
         flag=OK;
-        putchar('\n');      //Ã¿¸ö±í±éÀúÍê³Éºó»»ĞĞ
+        putchar('\n');      //æ¯ä¸ªè¡¨éå†å®Œæˆåæ¢è¡Œ
     }
     printf("\n------------------ end ------------------------\n");
     return flag;

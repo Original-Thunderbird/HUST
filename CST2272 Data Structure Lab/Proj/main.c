@@ -1,4 +1,4 @@
-#include"head.h"
+#include "head.h"
 int main()
 {
     COORD size = {SCR_COL, SCR_ROW};              /*窗口缓冲区大小*/
@@ -1222,7 +1222,7 @@ void CloseSys(void)
     /*关闭标准输入和输出设备句柄*/
     CloseHandle(gh_std_out);        CloseHandle(gh_std_in);
     /*将窗口标题栏置为运行结束*/
-    SetConsoleTitle("运行结束");
+    SetConsoleTitle("Exit");
     return;
 }
 
@@ -1237,7 +1237,7 @@ void CloseSys(void)
  */
 BOOL ExitSys(void)
 {
-    char *pCh[] = {"确认退出系统吗？", "确定", "取消"};
+    char *pCh[] = {"Do you want to exit?", "Yes", "No"};
     BOOL bRet = Message(pCh);
     PopOff();
     return bRet;
@@ -1292,9 +1292,9 @@ void ClearMemory(void){
 BOOL SaveData(void)
 {
     BOOL bRet = TRUE;
-    char *plabel_name[] = {"主菜单项：文件",
-                           "子菜单项：数据保存",
-                           "确认"
+    char *plabel_name[] = {"Main Menu Option: File",
+                           "Sub Menu Option: Data Backup",
+                           "Yes"
                           };
 
     ShowModule(plabel_name, 3);
@@ -1318,60 +1318,60 @@ BOOL Initial(void){     //pass
     cougraph->length = 0;
     grade[0].gr_num=grade[1].gr_num=grade[2].gr_num=0;
     grade[0].schead = grade[1].schead = grade[2].schead =NULL;
-    printf("系统初始化成功 ");
+    printf("System Startup Successfully");
     getchar();  ClearScreen();
     return TRUE;
 }
 
 BOOL AddTeacher(void){  //pass
     fflush(stdin);
-    printf("输入教师姓名:");
+    printf("Teacher Name:");
     scanf("%s", cbuffer);      getchar();
     for(i=0;i<telist->length;i++)
         if(!strcmp(telist->elem[i].tname,cbuffer)){
-            printf("该教师已存在");
+            printf("The teacher already exists!");
             getchar();   ClearScreen();    return TRUE;
         }
     AddNewTeacher(cbuffer);
-    printf("输入性别(男--1\t女--0):");
+    printf("Gender(Male--1\tFemale--0):");
     scanf("%hu",&telist->elem[telist->length].gender);   getchar();
-    printf("输入年龄:");
+    printf("Age:");
     scanf("%hu",&telist->elem[telist->length].age);   getchar();
-    telist->length++;    printf("插入成功");
+    telist->length++;    printf("Inserted");
     getchar();  ClearScreen();
     return TRUE;
 }
 
 BOOL AddRoom(void){     //pass
     fflush(stdin);
-    printf("请输入教室编号:");
+    printf("Room No.:");
     scanf("%s", cbuffer);      getchar();
     for(i=0;i<rolist->length;i++)
         if(!strcmp(rolist->elem[i].code,cbuffer)){
-            printf("该教室已存在");
+            printf("The room already exists!");
             getchar();   ClearScreen();    return TRUE;
         }
     AddNewRoom(cbuffer);
-    printf("输入容量:");
+    printf("Capacity:");
     scanf("%hu",&rolist->elem[rolist->length].rsize);   getchar();
-    rolist->length++;   printf("插入成功");
+    rolist->length++;   printf("Insert Success");
     getchar();  ClearScreen();
     return TRUE;
 }
 
 BOOL AddCourse(void){   //pass
     fflush(stdin);
-    printf("请输入课程名称:");
+    printf("Course Name:");
     scanf("%s", cbuffer);      getchar();
     for(i=0;i<cougraph->length;i++)
         if(!strcmp(cougraph->coulist[i].name,cbuffer)){
-            printf("该课程已存在");
+            printf("The course already exists!");
             getchar();   ClearScreen();    return TRUE;
         }
     AddNewCourse(cbuffer);
-    printf("输入先修课个数:");
+    printf("Number of pre-requisites:");
     scanf("%hu", &(cougraph->coulist[cougraph->length].arcnum));    getchar();
-    printf("输入各先修课程:");
+    printf("Name of each pre-requisite, \"Enter\" to seperate name of each course:");
     for(j=0;j<cougraph->coulist[cougraph->length].arcnum;j++){
         scanf("%s", cbuffer);   getchar();
         for(i=0;i<cougraph->length;i++)
@@ -1382,9 +1382,9 @@ BOOL AddCourse(void){   //pass
                 pcarc->nextarc = cougraph->coulist[cougraph->length].archead;
                 cougraph->coulist[cougraph->length].archead = pcarc;
             }
-            else    printf("清单中无此课程,放弃对其操作");
+            else    printf("Do not have this course in system, abort.");
     }
-    cougraph->length++;     printf("插入成功");
+    cougraph->length++;     printf("Inserted");
     getchar();  ClearScreen();
     return TRUE;
 }
@@ -1392,23 +1392,23 @@ BOOL AddCourse(void){   //pass
 BOOL AddGroup(void){    //pass
     char cbuf3[20];
     fflush(stdin);
-    printf("输入班号:");
+    printf("Class Number:");
     psch=ClassInput(cbuf3);
     if(psch!=NULL){
-        printf("该班级已存在");
+        printf("The class already exists!");
         getchar();   ClearScreen();    return TRUE;
     }
     //不存在时建立该班级结点
     psch=(Schedule *)malloc(sizeof(Schedule));
     strcpy(psch->classname, cbuf3);
-    printf("输入已修课程数目:");
+    printf("Number of taken courses:");
     scanf("%hu",&psch->do_num);    getchar();
     psch->pr_num=0;     //在修课程不可手动输入，需配合新课程一并导入
-    printf("输入各已修课程:\n");
+    printf("Name of each course taken, \"Enter\" to seperate name of each course:\n");
     for(i=0;i<psch->do_num;i++){
         scanf("%s",psch->done[i]);      getchar();
     }
-    printf("输入人数:");
+    printf("Size:");
     scanf("%hu",&psch->clsize);   getchar();
     for(i=0;i<6;i++){   //新班级下课堂结构初始化
         psch->week[i].classhead=NULL;
@@ -1429,7 +1429,7 @@ BOOL AddGroup(void){    //pass
         psch->next=grade[2].schead;     grade[2].schead=psch;
         grade[2].gr_num++;
     }
-    printf("插入成功");
+    printf("Inserted");
     getchar();  ClearScreen();
     return TRUE;
 }
@@ -1437,17 +1437,17 @@ BOOL AddGroup(void){    //pass
 BOOL DelTeacher(void){
     fflush(stdin);
     if(telist->length==0){
-        printf("教师名单为空");
+        printf("No teachers in system!");
         getchar();   ClearScreen();    return TRUE;
     }
-    printf("输入待删教师姓名:");
+    printf("Teacher name:");
     scanf("%s", cbuffer);   getchar();
     //定位目标教师，同时确认其存在性
     for(i=0;i<telist->length;i++){
         if(!strcmp(telist->elem[i].tname,cbuffer))    break;
     }
     if(i==telist->length){
-        printf("未找到相应教师");
+        printf("Not Found.");
         getchar();   ClearScreen();    return TRUE;
     }
     //删除目标教师结构下时间占位链表
@@ -1477,8 +1477,8 @@ BOOL DelTeacher(void){
     //删除目标教师
     for(j=i;j<telist->length-1;j++)
         telist->elem[j]=telist->elem[j+1];
-    telist->length--;   printf("删除成功");
-    if(telist->length==0)   printf("表中已无教师");
+    telist->length--;   printf("Deleted");
+    if(telist->length==0)   printf("Now there are no teachers in the system");
     getchar();  ClearScreen();
     return TRUE;
 }
@@ -1486,17 +1486,17 @@ BOOL DelTeacher(void){
 BOOL DelRoom(void){
     fflush(stdin);
     if(rolist->length==0){
-        printf("教室名单为空");
+        printf("No rooms in system!");
         getchar();   ClearScreen();    return TRUE;
     }
-    printf("请输入待删教室编号:");
+    printf("No. of Room:");
     scanf("%s", cbuffer);   getchar();
     //定位目标教室，同时确认其存在性
     for(i=0;i<rolist->length;i++){
         if(!strcmp(rolist->elem[i].code,cbuffer))    break;
     }
     if(i==rolist->length){
-        printf("未找到相应教室");
+        printf("Not Found");
         getchar();   ClearScreen();    return TRUE;
     }
     //删除所有先修课节点
@@ -1525,8 +1525,8 @@ BOOL DelRoom(void){
                     }
     for(j=i;j<rolist->length-1;j++)     //删除教室结构
         rolist->elem[j]=rolist->elem[j+1];
-    rolist->length--;   printf("删除成功");
-    if(rolist->length==0)   printf("表中已无教室");
+    rolist->length--;   printf("Deleted");
+    if(rolist->length==0)   printf("Now there are no rooms in the system");
     getchar();  ClearScreen();
     return TRUE;
 }
@@ -1534,17 +1534,17 @@ BOOL DelRoom(void){
 BOOL DelCourse(void){
     fflush(stdin);
     if(cougraph->length==0){
-        printf("课程名单为空");
+        printf("No courses in system!");
         getchar();   ClearScreen();    return TRUE;
     }
     CouArc *rcarc;
-    printf("输入待删课程名称:");
+    printf("Course Name:");
     scanf("%s", cbuffer);       getchar();
     //定位目标课程，同时确认其存在性
     for(i=0;i<cougraph->length;i++)
         if(!strcmp(cougraph->coulist[i].name,cbuffer))    break;
     if(i==cougraph->length){
-        printf("未找到相应课程");
+        printf("Not Found");
         getchar();   ClearScreen();    return TRUE;
     }
     //若课程清单中某门课的先修课为目标课程，则将目标课程结点删除，同时添加目标课程的先修课为新的先修课
@@ -1605,8 +1605,8 @@ BOOL DelCourse(void){
         }
 	for(j=i; j<cougraph->length-1; j++) //顶点v后面的顶点前移
 		cougraph->coulist[j] = cougraph->coulist[j+1];
-	cougraph->length--;     printf("删除成功");
-	if(cougraph->length==0)        printf("图中已无顶点");
+	cougraph->length--;     printf("Deleted");
+	if(cougraph->length==0)        printf("Now there are no courses in the system");
 	getchar();  ClearScreen();
     return TRUE;
 }
@@ -1616,15 +1616,15 @@ BOOL DelGroup(void){    //pass
     fflush(stdin);
     Schedule *psch=NULL, *qsch=NULL;
     Class *pcls=NULL;
-    printf("将删除班级下所有课堂\n继续? 是--Y\t否--其它任意键\n");
+    printf("Will also delete all relevant sessions\nContinue? Yes--Y\tNo--any other key\n");
     j=getchar();    getchar();
     if(j!='y' && j!='Y'){
         ClearScreen();    return TRUE;
     }
-    printf("请输入待删班级名称:");
+    printf("Class Name:");
     psch=ClassInput(cbuf3);
     if(psch==NULL){
-        printf("该班级不存在");
+        printf("Not Found");
         getchar();   ClearScreen();    return TRUE;
     }
     for(i=0;i<6;i++){
@@ -1645,7 +1645,7 @@ BOOL DelGroup(void){    //pass
             qsch->next=psch->next;  free(psch);
         }
         grade[0].gr_num--;
-        if(grade[0].gr_num==0)  printf("2015级已无班级");
+        if(grade[0].gr_num==0)  printf("Batch 2015 has no classes now");
     }
     else if(strstr(cbuf3,"16")){  //目标班级为头结点
         if(psch==grade[1].schead){
@@ -1656,7 +1656,7 @@ BOOL DelGroup(void){    //pass
             qsch->next=psch->next;  free(psch);
         }
         grade[1].gr_num--;
-        if(grade[1].gr_num==0)  printf("2016级已无班级");
+        if(grade[1].gr_num==0)  printf("Batch 2016 has no classes now");
     }
     else if(strstr(cbuf3,"17")){  //目标班级为头结点
         if(psch==grade[2].schead){
@@ -1667,9 +1667,9 @@ BOOL DelGroup(void){    //pass
             qsch->next=psch->next;  free(psch);
         }
         grade[2].gr_num--;
-        if(grade[2].gr_num==0)  printf("2017级已无班级");
+        if(grade[2].gr_num==0)  printf("Batch 2017 has no classes now");
     }
-    printf("删除成功");
+    printf("Deleted");
     getchar();  ClearScreen();
     return TRUE;
 }
@@ -1677,34 +1677,34 @@ BOOL DelGroup(void){    //pass
 BOOL AltTeacher(void){  //pass
     fflush(stdin);
     if(telist->length==0){
-        printf("教师名单为空");
+        printf("No courses in system!");
         getchar();   ClearScreen();    return TRUE;
     }
-    printf("请输入待改教师姓名:");
+    printf("Teacher name:");
     scanf("%s", cbuffer);   getchar();
     for(i=0;i<telist->length;i++)
         if(!strcmp(telist->elem[i].tname,cbuffer))    break;    //i保存目标教师在清单中的位置
     if(i==telist->length){
-        printf("未找到相应教师");
+        printf("Not Found");
         getchar();   ClearScreen();    return TRUE;
     }
     count=0;
     //选择修改方式
     do{
-        if(count++)     printf("选项越界,重新输入");
-        printf("修改什么信息?\n1--姓名\t2--性别\t3--年龄\t4--回主菜单\n");
+        if(count++)     printf("Option invalid. Re-enter:");
+        printf("What info to change?\n1--Name\t2--Gender\t3--Age\t4--Back to Menu\n");
         scanf("%hu", &choice);   getchar();
         if(choice==4){ ClearScreen();  return TRUE;    }
     }while(choice<1 || choice>4);
     switch(choice){
         case 1:
-            printf("请输入新教师姓名:");
+            printf("New Name:");
             scanf("%s", cbuffer);   getchar();
             //验证新名字的合法性
             for(j=0;j<telist->length;j++){
                 if(j==i)    continue;
                 if(!strcmp(telist->elem[j].tname,cbuffer)){
-                    printf("新教师已存在,将停止操作并返回主菜单");
+                    printf("The name already exists! Abort update & return to menu...");
                     getchar();   ClearScreen();    return TRUE;
                 }
             }
@@ -1714,20 +1714,20 @@ BOOL AltTeacher(void){  //pass
                         for(pcls=psch->week[j].classhead;pcls!=NULL;pcls=pcls->next)    //找到课堂并修改
                             if(!strcmp(telist->elem[i].tname,pcls->tname))   strcpy(pcls->tname,cbuffer);
             strcpy(telist->elem[i].tname, cbuffer);
-            printf("修改成功");
+            printf("Updated");
             break;
         case 2:
             //性别只有两种可能，互相改动即可
             if(telist->elem[i].gender==0)      telist->elem[i].gender=1;
             else    telist->elem[i].gender=0;
-            printf("性别修改成功,当前性别为");
-            if(telist->elem[i].gender==0)   printf("女");
-            else    printf("男");
+            printf("Gender updated. new gender is ");
+            if(telist->elem[i].gender==0)   printf("Female");
+            else    printf("Male");
             break;
         case 3:
-            printf("请输入新年龄:");
+            printf("New Age:");
             scanf("%hu", &telist->elem[i].age);   getchar();
-            printf("修改成功");
+            printf("Updated");
         case 4:
             break;
     }
@@ -1738,35 +1738,35 @@ BOOL AltTeacher(void){  //pass
 BOOL AltRoom(void){     //pass
     fflush(stdin);
     if(rolist->length==0){
-        printf("教室名单为空");
+        printf("No rooms in system!");
         getchar();   ClearScreen();    return TRUE;
     }
-    printf("请输入待改教室编号:");
+    printf("Room No.:");
     scanf("%s", cbuffer);   getchar();
     //查找目标教室
     for(i=0;i<rolist->length;i++)
         if(!strcmp(rolist->elem[i].code,cbuffer))    break;     //i保存目标教室在清单中的位置
     if(i==rolist->length){
-        printf("未找到相应教室");
+        printf("Not Found");
         getchar();   ClearScreen();    return TRUE;
     }
     //选择修改方式
     count = 0;
     do{
-        if(count)     printf("选项越界,重新输入");
-        printf("修改什么信息?\n1--编号\t2--容量\t3--回主菜单\n");
+        if(count)     printf("Option invalid. Re-enter:");
+        printf("What info to change?\n1--No.\t2--Capacity\t3--Back to Menu\n");
         scanf("%hu", &choice);   getchar();     count++;
         if(choice==3){ ClearScreen();  return TRUE;    }
     }while(choice<1 || choice>3);
     switch(choice){
         case 1:
-            printf("请输入新教室编号:");
+            printf("New Room No.:");
             scanf("%s", cbuffer);   getchar();
             //检查新编号的合法性
             for(j=0;j<rolist->length;j++){
                 if(j==i)    continue;
                 if(!strcmp(rolist->elem[j].code,cbuffer)){
-                    printf("目标教室已存在,将停止操作并返回主菜单");
+                    printf("New room No. is already occupied! Abort update & return to menu...");
                     getchar();   ClearScreen();    return TRUE;
                 }
             }
@@ -1777,12 +1777,12 @@ BOOL AltRoom(void){     //pass
                             if(!strcmp(rolist->elem[i].code,pcls->roomcode))   strcpy(pcls->roomcode,cbuffer);
             //修改教室结点
             strcpy(rolist->elem[i].code, cbuffer);
-            printf("修改成功");
+            printf("Updated");
             break;
         case 2:
-            printf("请输入新容量:");
+            printf("New Capacity:");
             scanf("%hu", &rolist->elem[i].rsize);   getchar();
-            printf("修改成功");
+            printf("Updated");
         case 3:
             break;
     }
@@ -1793,35 +1793,35 @@ BOOL AltRoom(void){     //pass
 BOOL AltCourse(void){   //pass
     fflush(stdin);
     if(cougraph->length==0){
-        printf("课程名单为空");
+        printf("No courses in system!");
         getchar();   ClearScreen();    return TRUE;
     }
-    printf("请输入待改课程名称:");
+    printf("Course Name:");
     scanf("%s", cbuffer);       getchar();
     //查找目标课程
     for(i=0;i<cougraph->length;i++)
         if(!strcmp(cougraph->coulist[i].name,cbuffer))    break;    //i保存目标课程在清单中的位置,之后不可用i做累加器
     if(i==cougraph->length){
-        printf("未找到相应课程");
+        printf("Not Found");
         getchar();   ClearScreen();    return TRUE;
     }
     //选择修改方式
     count = 0;
     do{
-        if(count++)     printf("选项越界,重新输入");
-        printf("修改什么信息?\n1--课程名称\t2--添加先修课程\t3--删除先修课程\t4--返回菜单\n");
+        if(count++)     printf("Option invalid. Re-enter:");
+        printf("What info to change?\n1--Name\t2--Add a pre-requisite\t3--Delete a pre-requisite\t4--Back to Menu\n");
         scanf("%hu", &choice);   getchar();
         if(choice==4){ ClearScreen();  return TRUE;    }
     }while(choice<1 || choice>4);
     switch(choice){
         case 1:
-            printf("输入新名称:");
+            printf("New Name:");
             scanf("%s", cbuffer);   getchar();
             //检查新课名的合法性
             for(j=0;j<cougraph->length;j++){
                 if(j==i)    continue;
                 if(!strcmp(cougraph->coulist[j].name,cbuffer)){
-                    printf("该课程已存在");
+                    printf("Course name is already occupied! Abort update & return to menu...");
                     getchar();   ClearScreen();    return TRUE;
                 }
             }
@@ -1838,24 +1838,24 @@ BOOL AltCourse(void){   //pass
                             if(!strcmp(cougraph->coulist[i].name,pcls->coursename))   strcpy(pcls->coursename,cbuffer);
             //修改目标课程结点
             strcpy(cougraph->coulist[i].name, cbuffer);
-            printf("修改成功");
+            printf("Updated");
             break;
         case 2:
             do{
-                printf("输入新先修课程名称:");
+                printf("Name of the new pre-requisite:");
                 scanf("%s", cbuffer);   getchar();
                 for(j=0;j<cougraph->length;j++){    //在课程查找表中查找对应课程
                     if(j==i)    continue;
                     if(!strcmp(cougraph->coulist[j].name, cbuffer))     break;
                 }
                 if(j==cougraph->length){
-                    printf("目标课程不存在");
+                    printf("This course do not exist!");
                     getchar();   ClearScreen();    return TRUE;
                 }
                 pcarc = cougraph->coulist[i].archead;
                 while(pcarc){   //检查该课程是否为已有的先修课
                     if(!strcmp(pcarc->prename, cbuffer)){
-                        printf("该先修课程已存在");
+                        printf("Already a pre-requisite");
                         getchar();   ClearScreen();    return TRUE;
                     }
                     pcarc = pcarc->nextarc;
@@ -1867,16 +1867,16 @@ BOOL AltCourse(void){   //pass
                 pcarc->nextarc = cougraph->coulist[i].archead;
                 cougraph->coulist[i].archead = pcarc;
                 cougraph->coulist[i].arcnum++;
-                printf("添加成功\n继续? 是--Y\t否--其他键");
+                printf("Added.\nContinue? Yes--Y\tNo--Any other key");
                 j=getchar();    getchar();
             }while(j=='Y' || j=='y');
             break;
         case 3:
             if(cougraph->coulist[i].arcnum==0){
-                printf("该课程无先修课");
+                printf("This course do not have pre-requisites");
                 getchar();   ClearScreen();    return TRUE;
             }
-            printf("输入待删先修课程名称:");
+            printf("Name of the pre-requisite to be deleted:");
             scanf("%s", cbuffer);   getchar();
             pcarc = cougraph->coulist[i].archead;
             while(pcarc){   //查找该课程是否为已有的先修课
@@ -1884,7 +1884,7 @@ BOOL AltCourse(void){   //pass
                 pcarc = pcarc->nextarc;
             }
             if(!pcarc){
-                printf("未找到相应课程");
+                printf("Not Found");
                 getchar();   ClearScreen();    return TRUE;
             }
             if(pcarc == cougraph->coulist[i].archead){ //待删结点是头结点
@@ -1896,7 +1896,7 @@ BOOL AltCourse(void){   //pass
                 qcarc->nextarc = pcarc->nextarc;    free(pcarc->prename);   free(pcarc);
             }
             cougraph->coulist[i].arcnum--;
-            printf("删除成功");
+            printf("Deleted");
             break;
         case 4:
             return TRUE;
@@ -1908,17 +1908,17 @@ BOOL AltCourse(void){   //pass
 BOOL AltGroup(void){    //pass
     char cbuf3[20];
     fflush(stdin);
-    printf("请输入待改班级名称:");
+    printf("Class Name:");
     psch=ClassInput(cbuf3);
     if(psch==NULL){
-        printf("该班级不存在");
+        printf("Not Found");
         getchar();   ClearScreen();    return TRUE;
     }
     //选择修改方式
     count = 0;
     do{
-        if(count)     printf("选项越界,重新输入");
-        printf("修改什么信息?\n1--班号\t2--添加已修课程\t3--修改已修课程\t4--删除已修课程\t5--人数\t6--返回菜单\n");
+        if(count)     printf("Option invalid. Re-enter:");
+        printf("What info to change?\n1--Class No.\t2--Add a taken course\t3--Update a taken course\t4--Delete a taken course\t5--Size\t6--Back to Menu\n");
         scanf("%hu", &hubuffer);   getchar();   count++;
         if(choice==6){ ClearScreen();  return TRUE;    }
     }while(hubuffer<1 || hubuffer>6);
@@ -1926,11 +1926,11 @@ BOOL AltGroup(void){    //pass
         case 1:
             flag=TRUE;
             do{
-                printf("请输入新班号:");
+                printf("New Class No.:");
                 scanf("%s", cbuf2);   getchar();
                 //验证新班号合法性
                 if((strstr(cbuf3,"15") && !strstr(cbuf2,"15")) || (strstr(cbuf3,"16") && !strstr(cbuf2,"16")) || (strstr(cbuf3,"17") && !strstr(cbuf2,"17"))){
-                    printf("不可跨年级修改班号\n");      flag=FALSE;
+                    printf("Not allowed to change batch!\n");      flag=FALSE;
                 }
             }while(flag==FALSE);
             //按班号确定验证头结点
@@ -1940,75 +1940,75 @@ BOOL AltGroup(void){    //pass
             //验证新班号存在性
             for(;qsch!=NULL;qsch=qsch->next){
                 if(!strcmp(qsch->classname,cbuf2)){
-                    printf("目标班级已存在");
+                    printf("Class already exists");
                     getchar();   ClearScreen();    return TRUE;
                 }
             }
             //修改班号
             strcpy(psch->classname, cbuf2);
-            printf("修改成功");
+            printf("Updated");
             break;
         case 2:
-            printf("请输入新已修课程名称:");
+            printf("Course Name:");
             scanf("%s", cbuffer);   getchar();
             //验证新课程存在性
             for(i=0; i<psch->do_num; i++)
                 if(!strcmp(psch->done[i], cbuffer)){
-                    printf("该课程已存在");
+                    printf("Course already recorded as taken");
                     getchar();   ClearScreen();    return TRUE;
                 }
             //添加课程
             strcpy(psch->done[psch->do_num], cbuffer);
             psch->do_num++;
-            printf("添加成功");
+            printf("Inserted");
             break;
         case 3:
-            printf("输入待改已修课程名称:");
+            printf("Course Name:");
             scanf("%s", cbuffer);   getchar();
             //验待改课程存在性
             for(i=0; i<psch->do_num; i++)
                 if(!strcmp(psch->done[i], cbuffer))   break;
             if(j==psch->do_num){
-                printf("未找到相应课程");
+                printf("Not Found");
                 getchar();   ClearScreen();    return TRUE;
             }
-            printf("请输入新已修课程名称:");
+            printf("New Name:");
             scanf("%s", cbuffer);   getchar();
             //验证新班号存课程名称合法性
             for(j=0;j<psch->do_num;j++){
                 if(!strcmp(psch->done[j], cbuffer)){
-                    printf("该课程已存在");
+                    printf("Course already recorded as taken");
                     getchar();   ClearScreen();    return TRUE;
                 }
             }
             //修改课程
             strcpy(psch->done[i], cbuffer);
-            printf("修改成功");
+            printf("Updated");
             break;
         case 4:
             if(psch->do_num==0){
-                printf("无已修课程");   break;
+                printf("No taken courses");   break;
             }
-            printf("请输入待删已修课程:");
+            printf("Course Name:");
             scanf("%c", cbuffer);   getchar();
             //验待删课程存在性
             for(i=0; i<psch->do_num; i++)
                 if(!strcmp(psch->done[i], cbuffer))   break;
             if(i==psch->do_num){
-                printf("未找到相应课程");
+                printf("Not Found");
                 getchar();   ClearScreen();    return TRUE;
             }
             //删除课程
             for(j=i;j<psch->do_num-1;j++)
                 strcpy(psch->done[j],psch->done[j+1]);
             psch->do_num--;
-            if(psch->do_num==0)   printf("表中已无已修课程");
-            printf("删除成功");     getchar();
+            if(psch->do_num==0)   printf("This class has no taken courses now");
+            printf("Deleted");     getchar();
             break;
         case 5:
-            printf("请输入新人数:");
+            printf("New Size:");
             scanf("%hu", &(psch->clsize));   getchar();
-            printf("修改成功");
+            printf("Updated");
         /*屏蔽修改在修课程的接口
         case 5:
             printf("请输入新在修课程名称:");

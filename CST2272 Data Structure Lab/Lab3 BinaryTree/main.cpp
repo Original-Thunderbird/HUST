@@ -8,13 +8,13 @@
 #define FALSE -1
 #define OK 1
 #define ERROR -2
-typedef int Status;   //ÊÇº¯ÊıµÄÀàĞÍ£¬ÆäÖµÊÇº¯Êı½á¹û×´Ì¬´úÂë
-typedef int ElemType; //Êı¾İÔªËØÀàĞÍ¶¨Òå
+typedef int Status;   //æ˜¯å‡½æ•°çš„ç±»å‹ï¼Œå…¶å€¼æ˜¯å‡½æ•°ç»“æœçŠ¶æ€ä»£ç 
+typedef int ElemType; //æ•°æ®å…ƒç´ ç±»å‹å®šä¹‰
 typedef struct BiTNode
 {
 	ElemType key;
 	char data;
-	struct BiTNode *lchild, *rchild;//×ó¡¢ÓÒ×ÓÊ÷Ö¸Õë
+	struct BiTNode *lchild, *rchild;//å·¦ã€å³å­æ ‘æŒ‡é’ˆ
 }BiTNode, *BitTree;
 Status InitBiTree(BitTree *L);
 Status DestroyBiTree(BitTree *L);
@@ -42,7 +42,7 @@ Status ReadBiTree(FILE *fp,BitTree *L);
 BitTree Search(BitTree L, ElemType key);
 char* Filename(void);
 FILE *fp;
-char *filename, *pc, appe[5]=".dat",input[60]; //¾ùÓÃÓÚÉú³ÉÎÄ¼şÃû
+char *filename, *pc, appe[5]=".dat",input[60]; //å‡ç”¨äºç”Ÿæˆæ–‡ä»¶å
 int main(void)
 {
 	BitTree L=NULL,*p,c=NULL;
@@ -71,185 +71,185 @@ int main(void)
 		printf("          0. Exit\n");
 		printf("\n");
 		printf("-------------------------------------------------\n");
-		printf("    ÇëÑ¡ÔñÄãµÄ²Ù×÷[0~22] ");
+		printf("    è¯·é€‰æ‹©ä½ çš„æ“ä½œ[0~22] ");
 		scanf("%d", &op);
 		switch (op) {
 		case 1:
-			if (InitBiTree(&L) == OK)		printf("³õÊ¼»¯¶ş²æÊ÷³É¹¦");
-			else				printf("³õÊ¼»¯¶ş²æÊ÷Ê§°Ü");
+			if (InitBiTree(&L) == OK)		printf("åˆå§‹åŒ–äºŒå‰æ ‘æˆåŠŸ");
+			else				printf("åˆå§‹åŒ–äºŒå‰æ ‘å¤±è´¥");
 			getchar(); getchar();			break;
 		case 2:
-			if (!L)             printf("¶ş²æÊ÷Î´³õÊ¼»¯");
+			if (!L)             printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
 			else if (DestroyBiTree(&L) == OK)
 			{
-				printf("¶ş²æÊ÷Ïú»Ù³É¹¦");		L = NULL;
+				printf("äºŒå‰æ ‘é”€æ¯æˆåŠŸ");		L = NULL;
 			}
-			else		printf("¶ş²æÊ÷Ïú»ÙÊ§°Ü");
+			else		printf("äºŒå‰æ ‘é”€æ¯å¤±è´¥");
 			getchar(); getchar();			break;
 		case 3:
-			if (!L)                             printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key != -1)              printf("¶ş²æÊ÷ÒÑ´æÔÚ");   //Ö±½ÓÓÃÅĞ¶ÏÊ÷¿ÕµÄÌõ¼ş£¬¸üÎª¿É¿¿
-			else if (CreateBiTree(&L) == OK)	printf("´´½¨³É¹¦");
-			else                                printf("´´½¨Ê§°Ü");
+			if (!L)                             printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key != -1)              printf("äºŒå‰æ ‘å·²å­˜åœ¨");   //ç›´æ¥ç”¨åˆ¤æ–­æ ‘ç©ºçš„æ¡ä»¶ï¼Œæ›´ä¸ºå¯é 
+			else if (CreateBiTree(&L) == OK)	printf("åˆ›å»ºæˆåŠŸ");
+			else                                printf("åˆ›å»ºå¤±è´¥");
 			getchar();getchar();			break;
 		case 4:
-			if (!L)                             printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)                printf("¶ş²æÊ÷Îª¿Õ");
-			else if (ClearBiTree(&L) == OK)     printf("Çå¿Õ³É¹¦");
-			else				                printf("Çå¿ÕÊ§°Ü");
+			if (!L)                             printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)                printf("äºŒå‰æ ‘ä¸ºç©º");
+			else if (ClearBiTree(&L) == OK)     printf("æ¸…ç©ºæˆåŠŸ");
+			else				                printf("æ¸…ç©ºå¤±è´¥");
 			getchar();getchar();			break;
 		case 5:
-			if (!L)                             printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (BiTreeEmpty(L) ==TRUE)     printf("¶ş²æÊ÷Îª¿Õ");
-			else                                printf("¶ş²æÊ÷·Ç¿Õ");
+			if (!L)                             printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (BiTreeEmpty(L) ==TRUE)     printf("äºŒå‰æ ‘ä¸ºç©º");
+			else                                printf("äºŒå‰æ ‘éç©º");
 			getchar();getchar();			break;
 		case 6:
-			if (!L)                 printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");    //Ê÷¿Õµ¥¶ÀÌÖÂÛ
-			else        printf("¶ş²æÊ÷Éî¶ÈÎª%d", BiTreeDepth(L));
+			if (!L)                 printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");    //æ ‘ç©ºå•ç‹¬è®¨è®º
+			else        printf("äºŒå‰æ ‘æ·±åº¦ä¸º%d", BiTreeDepth(L));
 			getchar();getchar();			break;
 		case 7:
-			if (!L)		            printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-            else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
-			else if (Root(L))       printf("¸ù½ÚµãkeyÎª%d", L->key);
+			if (!L)		            printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+            else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
+			else if (Root(L))       printf("æ ¹èŠ‚ç‚¹keyä¸º%d", L->key);
 			getchar();getchar();			break;
 		case 8:
-			if (!L)                 printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+			if (!L)                 printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("ÇëÊäÈëÄ¿±ê½áµãkey\n");
+                printf("è¯·è¾“å…¥ç›®æ ‡ç»“ç‚¹key\n");
                 scanf("%d", &key);			getchar();
-                data=Value(L, key); //¸³Öµ±í´ïÊ½×÷ÎªÅĞ¶ÏÌõ¼şÔÚµ±Ç°±àÒë»·¾³ÏÂ±¨warning,Òò´Ë¾ùÌá³ö×÷Îª¶ÀÁ¢Óï¾ä
-                if (data)     printf("keyµÄdataÎª%c", data);
-                else          printf("²éÕÒ½ÚµãÊ§°Ü"); //Ê§°ÜÔ­ÒòÖ®ºó¾ù·ÅÔÚº¯ÊıÄÚÌÖÂÛ
+                data=Value(L, key); //èµ‹å€¼è¡¨è¾¾å¼ä½œä¸ºåˆ¤æ–­æ¡ä»¶åœ¨å½“å‰ç¼–è¯‘ç¯å¢ƒä¸‹æŠ¥warning,å› æ­¤å‡æå‡ºä½œä¸ºç‹¬ç«‹è¯­å¥
+                if (data)     printf("keyçš„dataä¸º%c", data);
+                else          printf("æŸ¥æ‰¾èŠ‚ç‚¹å¤±è´¥"); //å¤±è´¥åŸå› ä¹‹åå‡æ”¾åœ¨å‡½æ•°å†…è®¨è®º
 			}
 			getchar();getchar();			break;
 		case 9:
-			if (!L)                 printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+			if (!L)                 printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("ÇëÊäÈëÄ¿±ê½Úµãkey\n");
+                printf("è¯·è¾“å…¥ç›®æ ‡èŠ‚ç‚¹key\n");
                 scanf("%d", &key);			getchar();
-                printf("ÇëÊäÈëĞÂdata\n");
+                printf("è¯·è¾“å…¥æ–°data\n");
                 scanf("%c", &data);			getchar();
-                if (Assign(&L, key, data) == OK)    printf("¸³Öµ³É¹¦");
-                else	printf("¸³ÖµÊ§°Ü");
+                if (Assign(&L, key, data) == OK)    printf("èµ‹å€¼æˆåŠŸ");
+                else	printf("èµ‹å€¼å¤±è´¥");
 			}
 			getchar();getchar();			break;
 		case 10:
-			if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+			if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
             else{
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("¶¨Î»½áµãkey:");
+                printf("å®šä½ç»“ç‚¹key:");
                 scanf("%d", &key);			getchar();
-                if(!Search(L,key))  printf("Î´ÕÒµ½Ä¿±ê½Úµã");
+                if(!Search(L,key))  printf("æœªæ‰¾åˆ°ç›®æ ‡èŠ‚ç‚¹");
                 else if (Parent(L, key ,p)!=NULL)
-                    printf("Ë«Ç×keyÎª%d", (*p)->key);
-                else	printf("·µ»ØÊ§°Ü");
+                    printf("åŒäº²keyä¸º%d", (*p)->key);
+                else	printf("è¿”å›å¤±è´¥");
             }
 			getchar();getchar();			break;
 		case 11:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
             else{
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("¶¨Î»½áµãkey:");
+                printf("å®šä½ç»“ç‚¹key:");
                 scanf("%d", &key);			getchar();
-                if(!Search(L,key))  printf("Î´ÕÒµ½Ä¿±ê½Úµã");
+                if(!Search(L,key))  printf("æœªæ‰¾åˆ°ç›®æ ‡èŠ‚ç‚¹");
                 else if (LeftChild(L, key, p)!=NULL)
-                    printf("×óº¢×ÓkeyÎª%d",(*p)->key);
-                else    printf("½ÚµãÎŞ×óº¢×Ó ·µ»ØÊ§°Ü");
+                    printf("å·¦å­©å­keyä¸º%d",(*p)->key);
+                else    printf("èŠ‚ç‚¹æ— å·¦å­©å­ è¿”å›å¤±è´¥");
             }
 			getchar();getchar();			break;
 		case 12:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("¶¨Î»½áµãkey:");
+                printf("å®šä½ç»“ç‚¹key:");
                 scanf("%d", &key);          getchar();
-                if(!Search(L,key))  printf("Î´ÕÒµ½Ä¿±ê½Úµã");
+                if(!Search(L,key))  printf("æœªæ‰¾åˆ°ç›®æ ‡èŠ‚ç‚¹");
                 else if (RightChild(L, key, p))
-                    printf("ÓÒº¢×ÓkeyÎª%d",(*p)->key);
-                else    printf("½ÚµãÎŞÓÒº¢×Ó ·µ»ØÊ§°Ü");
+                    printf("å³å­©å­keyä¸º%d",(*p)->key);
+                else    printf("èŠ‚ç‚¹æ— å³å­©å­ è¿”å›å¤±è´¥");
 			}
 			getchar();getchar();			break;
 		case 13:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("¶¨Î»½áµãkey:");
+                printf("å®šä½ç»“ç‚¹key:");
                 scanf("%d", &key);          getchar();
-                if(!Search(L,key))  printf("Î´ÕÒµ½Ä¿±ê½Úµã");
+                if(!Search(L,key))  printf("æœªæ‰¾åˆ°ç›®æ ‡èŠ‚ç‚¹");
                 else if (LeftSibling(L, key, p))
-                    printf("×óĞÖµÜkeyÎª%d",(*p)->key);
-                else    printf("½ÚµãÎŞ×óĞÖµÜ ·µ»ØÊ§°Ü");
+                    printf("å·¦å…„å¼Ÿkeyä¸º%d",(*p)->key);
+                else    printf("èŠ‚ç‚¹æ— å·¦å…„å¼Ÿ è¿”å›å¤±è´¥");
 			}
 			getchar();getchar();			break;
 		case 14:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
-			else{   //Òª½øĞĞµİ¹éµÄº¯Êı²»±ãÓÚ½«ÊäÈë¼°³ö´íÅĞ¶ÏÌõ¼şĞ´Èë£¬¹Ê´Ë²¿·ÖÔÚÖ®Ç°¼°Ö®ºó¾ùÒÆ³öº¯Êı
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
+			else{   //è¦è¿›è¡Œé€’å½’çš„å‡½æ•°ä¸ä¾¿äºå°†è¾“å…¥åŠå‡ºé”™åˆ¤æ–­æ¡ä»¶å†™å…¥ï¼Œæ•…æ­¤éƒ¨åˆ†åœ¨ä¹‹å‰åŠä¹‹åå‡ç§»å‡ºå‡½æ•°
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("¶¨Î»½áµãkey:");
+                printf("å®šä½ç»“ç‚¹key:");
                 scanf("%d", &key);         getchar();
-                if(!Search(L,key))  printf("Î´ÕÒµ½Ä¿±ê½Úµã");
+                if(!Search(L,key))  printf("æœªæ‰¾åˆ°ç›®æ ‡èŠ‚ç‚¹");
                 else if (RightSibling(L, key, p))
-                    printf("ÓÒĞÖµÜkeyÎª%d",(*p)->key);
+                    printf("å³å…„å¼Ÿkeyä¸º%d",(*p)->key);
                 else
-                    printf("½ÚµãÎŞÓÒĞÖµÜ ·µ»ØÊ§°Ü");
+                    printf("èŠ‚ç‚¹æ— å³å…„å¼Ÿ è¿”å›å¤±è´¥");
 			}
 			getchar();getchar();			break;
 		case 15:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
                 ClearBiTree(&(c));
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("´´½¨¶ş²æÊ÷,½øÈëCreateBiTree\n");
+                printf("åˆ›å»ºäºŒå‰æ ‘,è¿›å…¥CreateBiTree\n");
                 CreateBiTree(&(c));
-                printf("²åÈëÎ»ÖÃpµÄkey:");
+                printf("æ’å…¥ä½ç½®pçš„key:");
                 scanf("%d", &key);
-                FindNode(L, key, p);    //Ñ°ÕÒÓëkey¶ÔÓ¦µÄ½áµã£¬·µ»ØÆäÖ¸Õë
+                FindNode(L, key, p);    //å¯»æ‰¾ä¸keyå¯¹åº”çš„ç»“ç‚¹ï¼Œè¿”å›å…¶æŒ‡é’ˆ
                 while ((ch = getchar()) != EOF && ch != '\n');
-                if (*p == NULL) 	printf("Î´ÕÒµ½Ä¿±ê½Úµã");
+                if (*p == NULL) 	printf("æœªæ‰¾åˆ°ç›®æ ‡èŠ‚ç‚¹");
                 else
                 {
-                    printf("ÊäÈëLRµÄÖµ£º");
+                    printf("è¾“å…¥LRçš„å€¼ï¼š");
                     scanf("%d", &LR);   getchar();
                     if (InsertChild(&L, *p, LR, c) == OK)
-                        printf("²åÈë³É¹¦");
-                    else    printf("²åÈëÊ§°Ü");
+                        printf("æ’å…¥æˆåŠŸ");
+                    else    printf("æ’å…¥å¤±è´¥");
                 }
 			}
 			getchar();getchar();			break;
 		case 16:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
                 while ((ch = getchar()) != EOF && ch != '\n');
-                printf("É¾³ıÎ»ÖÃpµÄkey:");
+                printf("åˆ é™¤ä½ç½®pçš„key:");
                 scanf("%d", &key);			getchar();
                 FindNode(L, key, p);
-                if (*p == NULL)     printf("Î´ÕÒµ½Ä¿±ê½Úµã");
+                if (*p == NULL)     printf("æœªæ‰¾åˆ°ç›®æ ‡èŠ‚ç‚¹");
                 else
                 {
-                    printf("ÇëÊäÈëLRµÄÖµ£º");
+                    printf("è¯·è¾“å…¥LRçš„å€¼ï¼š");
                     scanf("%d", &LR);   getchar();
                     n = DeleteChild(&L, *p, LR);
-                    if (n == OK)            printf("É¾³ı³É¹¦");
-                    else if (n == ERROR)    printf("É¾³ıÊ§°Ü");
-                    else                    printf("²»ÄÜÉ¾³ı¿Õ×ÓÊ÷");
+                    if (n == OK)            printf("åˆ é™¤æˆåŠŸ");
+                    else if (n == ERROR)    printf("åˆ é™¤å¤±è´¥");
+                    else                    printf("ä¸èƒ½åˆ é™¤ç©ºå­æ ‘");
                 }
 			}
 			getchar();getchar();			break;
 		case 17:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
 			printf("\n----------------PreOrderTraverse all elements------------------\n");
 			PreOrderTraverse(L);
@@ -257,8 +257,8 @@ int main(void)
 			}
 			getchar();getchar();			break;
 		case 18:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
             else{
                 printf("\n----------------InOrderTraverse all elements------------------\n");
                 InOrderTraverse(L);
@@ -266,8 +266,8 @@ int main(void)
             }
 			getchar();getchar();			break;
 		case 19:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
                 printf("\n----------------PostOrderTraverse all elements------------------\n");
                 PostOrderTraverse(L);
@@ -275,8 +275,8 @@ int main(void)
             }
 			getchar();getchar();			break;
 		case 20:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
                 printf("\n----------------LevelOrderTraverse all elements------------------\n");
                 LevelOrderTraverse(L);
@@ -284,70 +284,70 @@ int main(void)
             }
 			getchar();getchar();			break;
 		case 21:
-            if (!L)				    printf("¶ş²æÊ÷Î´³õÊ¼»¯");
-			else if (L->key==-1)    printf("¶ş²æÊ÷Îª¿Õ");
+            if (!L)				    printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
+			else if (L->key==-1)    printf("äºŒå‰æ ‘ä¸ºç©º");
 			else{
-                filename = Filename();  //ÓÃÏµÍ³Ê±¼ä×Ô¶¯Éú³ÉÎÄ¼şÃû
+                filename = Filename();  //ç”¨ç³»ç»Ÿæ—¶é—´è‡ªåŠ¨ç”Ÿæˆæ–‡ä»¶å
                 if ((fp = fopen(filename, "w")) == NULL){
-                    printf("ÎÄ¼ş´ò¿ªÊ§°Ü ");  return ERROR;
+                    printf("æ–‡ä»¶æ‰“å¼€å¤±è´¥ ");  return ERROR;
                 }
                 else if (SaveBiTree(fp,L) == OK){
-                    fclose(fp);				printf("±£´æÎÄ¼ş³É¹¦");
+                    fclose(fp);				printf("ä¿å­˜æ–‡ä»¶æˆåŠŸ");
                 }
-                else    printf("±£´æÎÄ¼şÊ§°Ü");
+                else    printf("ä¿å­˜æ–‡ä»¶å¤±è´¥");
 			}
 			getchar();getchar();			break;
 		case 22:
-            if (!L)				printf("¶ş²æÊ÷Î´³õÊ¼»¯");
+            if (!L)				printf("äºŒå‰æ ‘æœªåˆå§‹åŒ–");
 			else{
                 if (BiTreeEmpty(L) != TRUE)
                     ClearBiTree(&L);
                 free(L);
                 L=NULL;
-                printf("ÇëÊäÈëÒª¶ÁÈ¡µÄÎÄ¼şÃû£º");
+                printf("è¯·è¾“å…¥è¦è¯»å–çš„æ–‡ä»¶åï¼š");
                 while ((ch = getchar()) != EOF && ch != '\n');
                 scanf("%s", input);  getchar();
-                filename=input;     //ÓÃinput´®ÔÚbufferºÍfilename´®¼ä¹ı¶É
+                filename=input;     //ç”¨inputä¸²åœ¨bufferå’Œfilenameä¸²é—´è¿‡æ¸¡
                 if ((fp = fopen(filename, "r")) == NULL)
-                    printf("ÎÄ¼ş´ò¿ªÊ§°Ü");
+                    printf("æ–‡ä»¶æ‰“å¼€å¤±è´¥");
                 else if (ReadBiTree(fp, &L) == OK)
                 {
-                    fclose(fp); printf("ÎÄ¼ş¶ÁÈ¡³É¹¦");
+                    fclose(fp); printf("æ–‡ä»¶è¯»å–æˆåŠŸ");
                 }
                 else
-                    printf("ÎÄ¼ş¶ÁÈ¡Ê§°Ü");
+                    printf("æ–‡ä»¶è¯»å–å¤±è´¥");
 			}
 			getchar();getchar();			break;
 		case 0:
 			break;
 		}
 	}
-	printf("»¶Ó­ÏÂ´ÎÔÙÊ¹ÓÃ±¾ÏµÍ³£¡\n");
+	printf("æ¬¢è¿ä¸‹æ¬¡å†ä½¿ç”¨æœ¬ç³»ç»Ÿï¼\n");
 	getchar();getchar();
 	return 0;
 }
 /**
- * º¯ÊıÃû³Æ£ºInitBiTree
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëLµÄµØÖ·
- * º¯Êı¹¦ÄÜ£º¹¹ÔìÒ»ÁĞ20¸ö¿ÕµÄ¶ş²æÊ÷±íÍ·
- * ·µ»ØÖµ£º³É¹¦¹¹Ôì·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šInitBiTree
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLçš„åœ°å€
+ * å‡½æ•°åŠŸèƒ½ï¼šæ„é€ ä¸€åˆ—20ä¸ªç©ºçš„äºŒå‰æ ‘è¡¨å¤´
+ * è¿”å›å€¼ï¼šæˆåŠŸæ„é€ è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 Status InitBiTree(BitTree *L){
 	if (*L)		return ERROR;
     *L = (BitTree)malloc(sizeof(BiTNode));
 	if (*L)
 	{
-		(*L)->key = -1;     //³õÊ¼»¯Îª¿ÕÊ÷
-		(*L)->lchild = NULL;		(*L)->rchild = NULL;    //º¢×ÓÖ¸ÕëÖÃ¿Õ
+		(*L)->key = -1;     //åˆå§‹åŒ–ä¸ºç©ºæ ‘
+		(*L)->lchild = NULL;		(*L)->rchild = NULL;    //å­©å­æŒ‡é’ˆç½®ç©º
 		return OK;
 	}
     return ERROR;
 }
 /**
- * º¯ÊıÃû³Æ£ºDestroyBiTree
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëLµÄµØÖ·
- * º¯Êı¹¦ÄÜ£ºÉ¾³ı¶ş²æÊ÷
- * ·µ»ØÖµ£º³É¹¦Ïú»Ù·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šDestroyBiTree
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLçš„åœ°å€
+ * å‡½æ•°åŠŸèƒ½ï¼šåˆ é™¤äºŒå‰æ ‘
+ * è¿”å›å€¼ï¼šæˆåŠŸé”€æ¯è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 Status DestroyBiTree(BitTree *L){
 	if ((*L)==NULL)		return ERROR;
@@ -355,40 +355,40 @@ Status DestroyBiTree(BitTree *L){
         DestroyBiTree(&(*L)->lchild);
 	if ((*L)->rchild != NULL)
         DestroyBiTree(&(*L)->rchild);
-	free(*L);   //µİ¹éÊÍ·Å½Úµã
+	free(*L);   //é€’å½’é‡Šæ”¾èŠ‚ç‚¹
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºCreateBiTree
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëLµÄµØÖ·
- * º¯Êı¹¦ÄÜ£º½¨Á¢¶ş²æÊ÷
- * ·µ»ØÖµ£º³É¹¦½¨Á¢·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šCreateBiTree
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLçš„åœ°å€
+ * å‡½æ•°åŠŸèƒ½ï¼šå»ºç«‹äºŒå‰æ ‘
+ * è¿”å›å€¼ï¼šæˆåŠŸå»ºç«‹è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 Status CreateBiTree(BitTree *L){
 	int keyin;
 	if(!(*L))   return ERROR;
-    printf("ÇëÊäÈë½áµã¹Ø¼ü×Ö£¬-1±íÊ¾²»´´½¨\n");   //-1×÷ÎªNULLµÄ±ê¼Ç£¬Í¬ÑùÒ²ÊÇÒ»´Îµİ¹éÏòÊ÷¸ù·½Ïò½øĞĞµÄ¿ªÊ¼
+    printf("è¯·è¾“å…¥ç»“ç‚¹å…³é”®å­—ï¼Œ-1è¡¨ç¤ºä¸åˆ›å»º\n");   //-1ä½œä¸ºNULLçš„æ ‡è®°ï¼ŒåŒæ ·ä¹Ÿæ˜¯ä¸€æ¬¡é€’å½’å‘æ ‘æ ¹æ–¹å‘è¿›è¡Œçš„å¼€å§‹
 	scanf("%d", &keyin);	getchar();
 	if (keyin==-1)
 	{		(*L) = NULL;		return 0;	}
 	else
 	{
 		if (!((*L = (BiTNode *)malloc(sizeof(BiTNode))))){
-            printf("¿Õ¼ä·ÖÅäÊ§°Ü");   return ERROR;
+            printf("ç©ºé—´åˆ†é…å¤±è´¥");   return ERROR;
 		}
 		(*L)->key = keyin;
-        printf("ÇëÊäÈë½áµãÖµ£º\n");
+        printf("è¯·è¾“å…¥ç»“ç‚¹å€¼ï¼š\n");
 		scanf("%c", &((*L)->data));		getchar();
 		CreateBiTree(&((*L)->lchild));
-		CreateBiTree(&((*L)->rchild));  //µİ¹é½¨Á¢½Úµã
+		CreateBiTree(&((*L)->rchild));  //é€’å½’å»ºç«‹èŠ‚ç‚¹
 	}
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºClearBiTree
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëLµÄµØÖ·
- * º¯Êı¹¦ÄÜ£ºÖØÖÃ¶ş²æÊ÷
- * ·µ»ØÖµ£º³É¹¦ÖÃ¿Õ·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šClearBiTree
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLçš„åœ°å€
+ * å‡½æ•°åŠŸèƒ½ï¼šé‡ç½®äºŒå‰æ ‘
+ * è¿”å›å€¼ï¼šæˆåŠŸç½®ç©ºè¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 Status ClearBiTree(BitTree *L){
 	if (!DestroyBiTree(&(*L)))		return ERROR;
@@ -397,20 +397,20 @@ Status ClearBiTree(BitTree *L){
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºBiTreeEmpty
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÅĞ¶Ï¶ş²æÊ÷ÊÇ·ñÎª¿Õ
- * ·µ»ØÖµ£º¿ÕTRUE,·Ç¿ÕFALSE
+ * å‡½æ•°åç§°ï¼šBiTreeEmpty
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šåˆ¤æ–­äºŒå‰æ ‘æ˜¯å¦ä¸ºç©º
+ * è¿”å›å€¼ï¼šç©ºTRUE,éç©ºFALSE
  **/
 Status BiTreeEmpty(BitTree L){
 	if (L->key==-1)		return TRUE;
 	else        		return FALSE;
 }
 /**
- * º¯ÊıÃû³Æ£ºBiTreeDepth
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÇó¶ş²æÊ÷Éî¶È
- * ·µ»ØÖµ£ºÉî¶Èdepth
+ * å‡½æ•°åç§°ï¼šBiTreeDepth
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šæ±‚äºŒå‰æ ‘æ·±åº¦
+ * è¿”å›å€¼ï¼šæ·±åº¦depth
  **/
 int BiTreeDepth(BitTree L){
 	int depth = 0,lchilddepth,rchilddepth;
@@ -423,48 +423,48 @@ int BiTreeDepth(BitTree L){
 	return depth;
 }
 /**
- * º¯ÊıÃû³Æ£ºRoot
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÕÒ¶ş²æÊ÷µÄ¸ù½Úµã
- * ·µ»ØÖµ£º¸ù½ÚµãL
+ * å‡½æ•°åç§°ï¼šRoot
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šæ‰¾äºŒå‰æ ‘çš„æ ¹èŠ‚ç‚¹
+ * è¿”å›å€¼ï¼šæ ¹èŠ‚ç‚¹L
  **/
 BitTree Root(BitTree L){
 	return L;
 }
 /**
- * º¯ÊıÃû³Æ£ºValue
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL£¬¹Ø¼ü×Ökey
- * º¯Êı¹¦ÄÜ£ºÕÒ¶ş²æÊ÷ÖĞ¹Ø¼ü×ÖÎªkeyµÄ½ÚµãµÄdata
- * ·µ»ØÖµ£º³É¹¦·µ»Ødata£¬Ê§°Ü·µ»Ø0
+ * å‡½æ•°åç§°ï¼šValue
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLï¼Œå…³é”®å­—key
+ * å‡½æ•°åŠŸèƒ½ï¼šæ‰¾äºŒå‰æ ‘ä¸­å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹çš„data
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›dataï¼Œå¤±è´¥è¿”å›0
  **/
 char Value(BitTree L, ElemType key){
     BitTree M = Search(L, key);
     if(M)   return M->data;
-    printf("Î´ÕÒµ½¸Ã½Úµã ");  return 0;
+    printf("æœªæ‰¾åˆ°è¯¥èŠ‚ç‚¹ ");  return 0;
 }
 /**
- * º¯ÊıÃû³Æ£ºAssign
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëLµÄµØÖ·£¬¹Ø¼ü×Ökey£¬ Êı¾İÓòdata
- * º¯Êı¹¦ÄÜ£º½«¶ş²æÊ÷ÖĞ¹Ø¼ü×ÖÎªkeyµÄ½ÚµãµÄdata¸³ÖµÎªvalue
- * ·µ»ØÖµ£º³É¹¦¸³Öµ·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šAssign
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLçš„åœ°å€ï¼Œå…³é”®å­—keyï¼Œ æ•°æ®åŸŸdata
+ * å‡½æ•°åŠŸèƒ½ï¼šå°†äºŒå‰æ ‘ä¸­å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹çš„dataèµ‹å€¼ä¸ºvalue
+ * è¿”å›å€¼ï¼šæˆåŠŸèµ‹å€¼è¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 Status Assign(BitTree *L, ElemType key, char data){
 	if (*L==NULL)		return 0;
 	BitTree M = Search(*L, key);
 	if(M){    M->data=data;   return OK;      }
-	printf("Î´ÕÒµ½¸Ã½Úµã ");  return 0;
+	printf("æœªæ‰¾åˆ°è¯¥èŠ‚ç‚¹ ");  return 0;
 }
 /**
- * º¯ÊıÃû³Æ£ºParent
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL£¬¹Ø¼ü×Ökey
- * º¯Êı¹¦ÄÜ£ºÕÒ¶ş²æÊ÷ÖĞ¹Ø¼ü×ÖÎªkeyµÄ½ÚµãµÄË«Ç×
- * ·µ»ØÖµ£º³É¹¦·µ»ØË«Ç×½ÚµãÖ¸Õë£¬·ñÔò·µ»ØNULL
+ * å‡½æ•°åç§°ï¼šParent
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLï¼Œå…³é”®å­—key
+ * å‡½æ•°åŠŸèƒ½ï¼šæ‰¾äºŒå‰æ ‘ä¸­å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹çš„åŒäº²
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›åŒäº²èŠ‚ç‚¹æŒ‡é’ˆï¼Œå¦åˆ™è¿”å›NULL
  **/
 BitTree* Parent(BitTree L, ElemType key,BitTree *node)
 {
 	if(L==NULL)     return NULL;
 	if (L->key == key){
-        printf("Ä¿±ê½ÚµãÎªÍ·½áµã ÎŞË«Ç× ");    return NULL;
+        printf("ç›®æ ‡èŠ‚ç‚¹ä¸ºå¤´ç»“ç‚¹ æ— åŒäº² ");    return NULL;
 	}
 	if ((L->lchild) != NULL)
 		if (L->lchild->key == key)
@@ -477,10 +477,10 @@ BitTree* Parent(BitTree L, ElemType key,BitTree *node)
     return NULL;
 }
 /**
- * º¯ÊıÃû³Æ£ºLeftChild
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL£¬¹Ø¼ü×Ökey
- * º¯Êı¹¦ÄÜ£ºÕÒ¶ş²æÊ÷ÖĞ¹Ø¼ü×ÖÎªkeyµÄ½ÚµãµÄ×óº¢×Ó
- * ·µ»ØÖµ£º³É¹¦·µ»Ø×óº¢×Ó½ÚµãÖ¸Õë£¬·ñÔò·µ»ØNULL
+ * å‡½æ•°åç§°ï¼šLeftChild
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLï¼Œå…³é”®å­—key
+ * å‡½æ•°åŠŸèƒ½ï¼šæ‰¾äºŒå‰æ ‘ä¸­å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹çš„å·¦å­©å­
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›å·¦å­©å­èŠ‚ç‚¹æŒ‡é’ˆï¼Œå¦åˆ™è¿”å›NULL
  **/
 BitTree LeftChild(BitTree L, ElemType key, BitTree *node)
 {
@@ -493,10 +493,10 @@ BitTree LeftChild(BitTree L, ElemType key, BitTree *node)
 	return NULL;
 }
 /**
- * º¯ÊıÃû³Æ£ºRightChild
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL£¬¹Ø¼ü×Ökey
- * º¯Êı¹¦ÄÜ£ºÕÒ¶ş²æÊ÷ÖĞ¹Ø¼ü×ÖÎªkeyµÄ½ÚµãµÄÓÒº¢×Ó
- * ·µ»ØÖµ£º³É¹¦·µ»ØÓÒº¢×Ó½ÚµãÖ¸Õë£¬·ñÔò·µ»ØNULL
+ * å‡½æ•°åç§°ï¼šRightChild
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLï¼Œå…³é”®å­—key
+ * å‡½æ•°åŠŸèƒ½ï¼šæ‰¾äºŒå‰æ ‘ä¸­å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹çš„å³å­©å­
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›å³å­©å­èŠ‚ç‚¹æŒ‡é’ˆï¼Œå¦åˆ™è¿”å›NULL
  **/
 BitTree RightChild(BitTree L, ElemType key, BitTree *node)
 {
@@ -509,10 +509,10 @@ BitTree RightChild(BitTree L, ElemType key, BitTree *node)
 	return NULL;
 }
 /**
- * º¯ÊıÃû³Æ£ºLeftSibling
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL£¬¹Ø¼ü×Ökey
- * º¯Êı¹¦ÄÜ£ºÕÒ¶ş²æÊ÷ÖĞ¹Ø¼ü×ÖÎªkeyµÄ½ÚµãµÄ×óĞÖµÜ
- * ·µ»ØÖµ£º³É¹¦·µ»Ø×óĞÖµÜ½ÚµãÖ¸Õë£¬·ñÔò·µ»ØNULL
+ * å‡½æ•°åç§°ï¼šLeftSibling
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLï¼Œå…³é”®å­—key
+ * å‡½æ•°åŠŸèƒ½ï¼šæ‰¾äºŒå‰æ ‘ä¸­å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹çš„å·¦å…„å¼Ÿ
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›å·¦å…„å¼ŸèŠ‚ç‚¹æŒ‡é’ˆï¼Œå¦åˆ™è¿”å›NULL
  **/
 BitTree LeftSibling(BitTree L, ElemType key, BitTree *node)
 {
@@ -525,10 +525,10 @@ BitTree LeftSibling(BitTree L, ElemType key, BitTree *node)
 	return NULL;
 }
 /**
- * º¯ÊıÃû³Æ£ºRightSibling
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL£¬¹Ø¼ü×Ökey
- * º¯Êı¹¦ÄÜ£ºÕÒ¶ş²æÊ÷ÖĞ¹Ø¼ü×ÖÎªkeyµÄ½ÚµãµÄÓÒĞÖµÜ
- * ·µ»ØÖµ£º³É¹¦·µ»ØÓÒĞÖµÜ½ÚµãÖ¸Õë£¬·ñÔò·µ»ØNULL
+ * å‡½æ•°åç§°ï¼šRightSibling
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLï¼Œå…³é”®å­—key
+ * å‡½æ•°åŠŸèƒ½ï¼šæ‰¾äºŒå‰æ ‘ä¸­å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹çš„å³å…„å¼Ÿ
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›å³å…„å¼ŸèŠ‚ç‚¹æŒ‡é’ˆï¼Œå¦åˆ™è¿”å›NULL
  **/
 BitTree RightSibling(BitTree L, ElemType key, BitTree *node)
 {
@@ -541,32 +541,32 @@ BitTree RightSibling(BitTree L, ElemType key, BitTree *node)
 	return NULL;
 }
 /**
- * º¯ÊıÃû³Æ£ºInsertChild
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëLµÄµØÖ·£¬¶ş²æÊ÷½áµãÖ¸Õëp, ¶¨Î»±äÁ¿LR£¬¶ş²æÊ÷½áµãÖ¸Õëc
- * º¯Êı¹¦ÄÜ£ºÔÚ½Úµãp´¦²åÈë×ÓÊ÷c
- * ·µ»ØÖµ£º³É¹¦·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šInsertChild
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLçš„åœ°å€ï¼ŒäºŒå‰æ ‘ç»“ç‚¹æŒ‡é’ˆp, å®šä½å˜é‡LRï¼ŒäºŒå‰æ ‘ç»“ç‚¹æŒ‡é’ˆc
+ * å‡½æ•°åŠŸèƒ½ï¼šåœ¨èŠ‚ç‚¹på¤„æ’å…¥å­æ ‘c
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 Status InsertChild(BitTree *L,BitTree p, int LR, BitTree c)
 {
 	if (LR == 0){
         if (p->rchild != NULL){
-            printf("¶ş²æÊ÷Cº¬ÓĞ×ó×ÓÊ÷\n");  return ERROR;
+            printf("äºŒå‰æ ‘Cå«æœ‰å·¦å­æ ‘\n");  return ERROR;
         }
 	    p->lchild = c;  return OK;
     }
 	else if (LR == 1){
         if (p->rchild != NULL){
-            printf("¶ş²æÊ÷Cº¬ÓĞÓÒ×ÓÊ÷\n");  return ERROR;
+            printf("äºŒå‰æ ‘Cå«æœ‰å³å­æ ‘\n");  return ERROR;
         }
         p->rchild = c;  return OK;
     }
 	else    return ERROR;
 }
 /**
- * º¯ÊıÃû³Æ£ºDeleteChild
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëLµÄµØÖ·£¬¶ş²æÊ÷½áµãÖ¸Õëp, ¶¨Î»±äÁ¿LR
- * º¯Êı¹¦ÄÜ£ºÔÚ½Úµãp´¦É¾³ı×ó/ÓÒ×ÓÊ÷c
- * ·µ»ØÖµ£º³É¹¦·µ»ØOK£¬·ñÔò·µ»ØERROR
+ * å‡½æ•°åç§°ï¼šDeleteChild
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLçš„åœ°å€ï¼ŒäºŒå‰æ ‘ç»“ç‚¹æŒ‡é’ˆp, å®šä½å˜é‡LR
+ * å‡½æ•°åŠŸèƒ½ï¼šåœ¨èŠ‚ç‚¹på¤„åˆ é™¤å·¦/å³å­æ ‘c
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›OKï¼Œå¦åˆ™è¿”å›ERROR
  **/
 Status DeleteChild(BitTree *L, BitTree p, int LR)
 {
@@ -586,10 +586,10 @@ Status DeleteChild(BitTree *L, BitTree p, int LR)
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºPreOrderTraverse
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÏÈĞò±éÀú¶ş²æÊ÷
- * ·µ»ØÖµ£ºOK
+ * å‡½æ•°åç§°ï¼šPreOrderTraverse
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šå…ˆåºéå†äºŒå‰æ ‘
+ * è¿”å›å€¼ï¼šOK
  **/
 Status PreOrderTraverse(BitTree L)
 {
@@ -603,10 +603,10 @@ Status PreOrderTraverse(BitTree L)
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºInOrderTraverse
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÖĞĞò±éÀú¶ş²æÊ÷
- * ·µ»ØÖµ£ºOK
+ * å‡½æ•°åç§°ï¼šInOrderTraverse
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šä¸­åºéå†äºŒå‰æ ‘
+ * è¿”å›å€¼ï¼šOK
  **/
 Status InOrderTraverse(BitTree L)
 {
@@ -620,10 +620,10 @@ Status InOrderTraverse(BitTree L)
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºPostOrderTraverse
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£ººóĞò±éÀú¶ş²æÊ÷
- * ·µ»ØÖµ£ºOK
+ * å‡½æ•°åç§°ï¼šPostOrderTraverse
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šååºéå†äºŒå‰æ ‘
+ * è¿”å›å€¼ï¼šOK
  **/
 Status PostOrderTraverse(BitTree L)
 {
@@ -637,10 +637,10 @@ Status PostOrderTraverse(BitTree L)
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºLevelOrderTraverse
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£º²ãĞò±éÀú¶ş²æÊ÷
- * ·µ»ØÖµ£ºOK
+ * å‡½æ•°åç§°ï¼šLevelOrderTraverse
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šå±‚åºéå†äºŒå‰æ ‘
+ * è¿”å›å€¼ï¼šOK
  **/
 Status LevelOrderTraverse(BitTree T)
 {
@@ -658,10 +658,10 @@ Status LevelOrderTraverse(BitTree T)
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºSaveBiTree
- * º¯Êı²ÎÊı£ºÎÄ¼şÖ¸Õëfp£¬¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£º½«LÖĞµÄÊı¾İ±£´æµ½fpÖ¸ÕëÖ¸ÏòµÄÎÄ¼şÖĞ
- * ·µ»ØÖµ£ºOK
+ * å‡½æ•°åç§°ï¼šSaveBiTree
+ * å‡½æ•°å‚æ•°ï¼šæ–‡ä»¶æŒ‡é’ˆfpï¼ŒäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šå°†Lä¸­çš„æ•°æ®ä¿å­˜åˆ°fpæŒ‡é’ˆæŒ‡å‘çš„æ–‡ä»¶ä¸­
+ * è¿”å›å€¼ï¼šOK
  **/
 Status SaveBiTree(FILE *fp, BitTree L)
 {
@@ -678,10 +678,10 @@ Status SaveBiTree(FILE *fp, BitTree L)
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºLoadBiTree
- * º¯Êı²ÎÊı£ºÎÄ¼şÖ¸Õëfp£¬¶ş²æÊ÷Í·Ö¸ÕëL
- * º¯Êı¹¦ÄÜ£ºÊı¾İ¼ÓÔØ£¬Îª¶ş²æÊ÷ÊäÈëÔªËØ¡£
- * ·µ»ØÖµ£ºOK
+ * å‡½æ•°åç§°ï¼šLoadBiTree
+ * å‡½æ•°å‚æ•°ï¼šæ–‡ä»¶æŒ‡é’ˆfpï¼ŒäºŒå‰æ ‘å¤´æŒ‡é’ˆL
+ * å‡½æ•°åŠŸèƒ½ï¼šæ•°æ®åŠ è½½ï¼Œä¸ºäºŒå‰æ ‘è¾“å…¥å…ƒç´ ã€‚
+ * è¿”å›å€¼ï¼šOK
  **/
 Status ReadBiTree(FILE *fp, BitTree *L)
 {
@@ -699,10 +699,10 @@ Status ReadBiTree(FILE *fp, BitTree *L)
 	return OK;
 }
 /**
- * º¯ÊıÃû³Æ£ºFindNode
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL£¬¹Ø¼ü×Ökey£¬¶ş²æÊ÷½áµãÖ¸ÕënodeµÄµØÖ·,
- * º¯Êı¹¦ÄÜ£ºÑ°ÕÒ¹Ø¼ü×ÖÎªkeyµÄ½Úµã²¢·µ»ØÆäÖ¸Õë
- * ·µ»ØÖµ£º³É¹¦·µ»ØnodeµÄµØÖ·£¬·ñÔò·µ»ØNULL
+ * å‡½æ•°åç§°ï¼šFindNode
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLï¼Œå…³é”®å­—keyï¼ŒäºŒå‰æ ‘ç»“ç‚¹æŒ‡é’ˆnodeçš„åœ°å€,
+ * å‡½æ•°åŠŸèƒ½ï¼šå¯»æ‰¾å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹å¹¶è¿”å›å…¶æŒ‡é’ˆ
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›nodeçš„åœ°å€ï¼Œå¦åˆ™è¿”å›NULL
  **/
 BitTree FindNode(BitTree L, ElemType key, BitTree *node)
 {
@@ -715,10 +715,10 @@ BitTree FindNode(BitTree L, ElemType key, BitTree *node)
 	return NULL;
 }
 /**
- * º¯ÊıÃû³Æ£ºSearch
- * º¯Êı²ÎÊı£º¶ş²æÊ÷Í·Ö¸ÕëL£¬¹Ø¼ü×Ökey
- * º¯Êı¹¦ÄÜ£ºÑ°ÕÒ¹Ø¼ü×ÖÎªkeyµÄ½Úµã²¢·µ»ØÆäÖ¸Õë
- * ·µ»ØÖµ£º³É¹¦·µ»ØMµÄµØÖ·£¬·ñÔò·µ»ØNULL
+ * å‡½æ•°åç§°ï¼šSearch
+ * å‡½æ•°å‚æ•°ï¼šäºŒå‰æ ‘å¤´æŒ‡é’ˆLï¼Œå…³é”®å­—key
+ * å‡½æ•°åŠŸèƒ½ï¼šå¯»æ‰¾å…³é”®å­—ä¸ºkeyçš„èŠ‚ç‚¹å¹¶è¿”å›å…¶æŒ‡é’ˆ
+ * è¿”å›å€¼ï¼šæˆåŠŸè¿”å›Mçš„åœ°å€ï¼Œå¦åˆ™è¿”å›NULL
  **/
 BitTree Search(BitTree L, ElemType key){
     BitTree M=NULL;
@@ -729,19 +729,19 @@ BitTree Search(BitTree L, ElemType key){
     return M;
 }
 /**
- * º¯ÊıÃû³Æ£ºFilename
- * º¯Êı²ÎÊı£ºÎŞ
- * º¯Êı¹¦ÄÜ£º°´ÕÕÏµÍ³Ê±¼ä×Ô¶¯Éú³ÉÎÄ¼şÃû²¢ĞŞÊÎ
- * ·µ»ØÖµ£º·µ»ØÊ±¼ä×Ö·û´®Ö¸Õë
+ * å‡½æ•°åç§°ï¼šFilename
+ * å‡½æ•°å‚æ•°ï¼šæ— 
+ * å‡½æ•°åŠŸèƒ½ï¼šæŒ‰ç…§ç³»ç»Ÿæ—¶é—´è‡ªåŠ¨ç”Ÿæˆæ–‡ä»¶åå¹¶ä¿®é¥°
+ * è¿”å›å€¼ï¼šè¿”å›æ—¶é—´å­—ç¬¦ä¸²æŒ‡é’ˆ
  **/
 char* Filename(void){
     time_t lt;
     lt=time(NULL);
     filename=ctime(&lt);
     filename[strlen(filename)-1]='\0';
-    strcat(filename,appe);      //ÒÔÉÏÉú³ÉÊ±¼äÃüÃûµÄÎÄ¼şÃû×Ö·û´®
+    strcat(filename,appe);      //ä»¥ä¸Šç”Ÿæˆæ—¶é—´å‘½åçš„æ–‡ä»¶åå­—ç¬¦ä¸²
     pc=&filename[0];
-    while(*pc){       //ÎÄ¼şÃû×Ö·û´®¹æ·¶»¯£¬½«¡®:¡¯Óë' ' ÓÃ¡®_¡¯´úÌæ
+    while(*pc){       //æ–‡ä»¶åå­—ç¬¦ä¸²è§„èŒƒåŒ–ï¼Œå°†â€˜:â€™ä¸' ' ç”¨â€˜_â€™ä»£æ›¿
         if((*pc==':' ) ||   (*pc==' ')){   *pc='_';    }
         pc++;
     }

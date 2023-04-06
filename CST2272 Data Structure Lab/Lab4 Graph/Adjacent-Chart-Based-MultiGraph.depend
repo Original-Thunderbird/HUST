@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1515075859 source:d:\program files\dev-cpp\myprojects\adjacent-chart-based-multigraph\main.cpp
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<time.h>
-
